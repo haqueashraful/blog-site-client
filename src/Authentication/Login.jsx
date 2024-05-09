@@ -158,13 +158,13 @@ const Login = () => {
             aria-label="Log in with Google"
             className="p-3 rounded-sm"
           >
-            <FaGoogle className=" size-8" />
+            <FaGoogle className=" size-8 text-black" />
           </button>
-          <div>
+          <div className="text-black">
             <p>Or</p>
           </div>
           <button onClick={gitHubSignIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
-            <FaGithub className=" size-8" />
+            <FaGithub className=" size-8 text-black" />
           </button>
         </div>
       </div>
