@@ -7,15 +7,19 @@ import { Context } from "../Context/MyContext";
 import CommentCard from "../Component/CommentCard";
 
 const BlogDetails = () => {
-  const { user } = useContext(Context);
+  const { user, loader } = useContext(Context);
   const { id } = useParams();
   const [data, setData] = useState({});
   const [comments, setComments] = useState([]);
+  const [showComments, setShowComments] = useState(false);
+  const [updateComment, setUpdateComment] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+
 
   useEffect(() => {
     axios
@@ -31,7 +35,7 @@ const BlogDetails = () => {
       .then((res) => {
         setComments(res.data);
       });
-  }, [id]);
+  }, [id, showComments, updateComment]);
 
 
   const {
@@ -57,6 +61,7 @@ const BlogDetails = () => {
     axios.post("http://localhost:5000/comments", commentData, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
+        setShowComments(true);
       })
       .catch((error) => {
         console.error("Error submitting comment:", error);
@@ -64,13 +69,15 @@ const BlogDetails = () => {
       });
   };
   
-  
+  if (loader) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
       <div className="w-full flex gap-2">
         {/* Blog Details */}
-        <div className="w-full">
+        <div className="w-1/2">
           <div>
             <img src={image_url} alt={title} />
             <h1>{title}</h1>
@@ -100,9 +107,9 @@ const BlogDetails = () => {
         </div>
 
         {/* Comments */}
-        <div className="w-full">
+        <div className="w-1/2 flex flex-col gap-2">
           {
-            comments.map((comment) => <CommentCard key={comment._id} comment={comment} ></CommentCard> )
+            comments.map((comment) => <CommentCard key={comment._id} comment={comment} setUpdateComment={setUpdateComment} ></CommentCard> )
           }
         </div>
       </div>

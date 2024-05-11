@@ -70,19 +70,17 @@ export const MyContext = ({ children }) => {
    
   useEffect(() => {
     setLoader(true);
+    const loggedUser = {
+      email: user?.email,
+    };
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      const loggedUser = {
-        email: currentUser?.email,
-      };
+      setLoader(true);
       setUser(currentUser);
       setStateLoader(false);
       setLoader(false);
       if (currentUser) {
-       
-        console.log(loggedUser)
-        axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true})
+               axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true})
           .then((response) => {
-            toast.success(response.data.message);
             console.log(response.data)
           });
       } else {

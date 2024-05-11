@@ -19,7 +19,9 @@ const AddBlogs = () => {
   const onSubmit = (data) => {
     // Add the selected category to the data object
     data.category = selectedCategory?.value;
-
+    data.email = user?.email;
+    data.userName = user?.displayName;
+    data.userPhoto = user?.photoURL;
     // Handle form submission (e.g., send data to backend)
     console.log(data);
     axios.post("http://localhost:5000/blogs", data).then((res) => {
@@ -146,6 +148,8 @@ const AddBlogs = () => {
             <span className="text-red-500">{errors.email.message}</span>
           )}
         </div>
+
+
 
         <button
           type="submit"
