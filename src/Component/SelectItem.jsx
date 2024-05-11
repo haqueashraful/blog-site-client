@@ -1,0 +1,25 @@
+import Select from "react-select";
+
+const SelectItem = ({ selectedCategory, handleCategoryChange }) => {
+  return (
+    <div className=" flex gap-4">
+      {/* <label htmlFor="category" className="block font-medium">
+        Category
+      </label> */}
+      <Select
+      className="w-60"
+        id="category"
+        value={selectedCategory || "Filter by Category"}
+        onChange={handleCategoryChange}
+        options={[
+            { value: "", label: "All" },
+          { value: "tech", label: "Technology" },
+          { value: "food", label: "Food" },
+          { value: "travel", label: "Travel" }
+        ]}
+      />
+    </div>
+  );
+};
+
+export default SelectItem;

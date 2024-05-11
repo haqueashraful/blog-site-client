@@ -2,6 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 export const Context = createContext();
 
@@ -64,36 +65,43 @@ export const MyContext = ({ children }) => {
         });
     };
   
-    // const handleChange = () => {
-    //   const newChecked = !isChecked;
-    //   setIsChecked(newChecked);
-    //   localStorage.setItem("isChecked", newChecked);
-    // };
-    
-    // useEffect(() => {
-    //   const storedChecked = localStorage.getItem("isChecked");
-    //   if (storedChecked !== null) {
-    //     setIsChecked(storedChecked === "true");
-    //   }
-    // }, []);
-    
-    // useEffect(() => {
-    //   const newTheme = isChecked ? "light" : "sunset";
-    //   document.documentElement.setAttribute("data-theme", newTheme);
-    // }, [isChecked]);
-    
    
-    useEffect(() => {
-      setLoader(true);
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-        setStateLoader(false);
-        setLoader(false);
-      });
-      return () => {
-        unsubscribe();
+   
+   
+  useEffect(() => {
+    setLoader(true);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const loggedUser = {
+        email: currentUser?.email,
       };
-    }, []);
+      setUser(currentUser);
+      setStateLoader(false);
+      setLoader(false);
+      if (currentUser) {
+       
+        console.log(loggedUser)
+        axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true})
+          .then((response) => {
+            toast.success(response.data.message);
+            console.log(response.data)
+          });
+      } else {
+        axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
+          .then((response) => {
+            toast.success(response.data.message);
+          })
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+
+  const handleAddToWishlist = (blog) => {
+    // Implement functionality to add blog to wishlist
+    console.log('Added to wishlist:', blog);
+  };
   
     const info = {
       setUser,
@@ -107,6 +115,7 @@ export const MyContext = ({ children }) => {
       setLoader,
       setStateLoader,
       setIsChecked,
+      handleAddToWishlist,
     //   handleChange,
       isChecked,
       stateLoader,
