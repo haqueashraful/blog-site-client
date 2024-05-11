@@ -22,12 +22,21 @@ const AddBlogs = () => {
     data.email = user?.email;
     data.userName = user?.displayName;
     data.userPhoto = user?.photoURL;
+  
+    // Get the current date and time
+    const currentDate = new Date();
+    const localDateTime = currentDate.toLocaleString(); // Format: "MM/DD/YYYY, HH:MM:SS AM/PM" (example)
+  
+    // Add the local date and time to the data object
+    data.createdTime = localDateTime;
+  
     // Handle form submission (e.g., send data to backend)
     console.log(data);
     axios.post("http://localhost:5000/blogs", data).then((res) => {
       console.log(res.data);
     });
   };
+  
 
   const handleCategoryChange = (selectedOption) => {
     setSelectedCategory(selectedOption);
@@ -132,7 +141,7 @@ const AddBlogs = () => {
         </div>
 
         {/* email */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="email" className="block font-medium">
             Email
           </label>
@@ -147,7 +156,7 @@ const AddBlogs = () => {
           {errors.email && (
             <span className="text-red-500">{errors.email.message}</span>
           )}
-        </div>
+        </div> */}
 
 
 
