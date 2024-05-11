@@ -88,7 +88,6 @@ export const MyContext = ({ children }) => {
       } else {
         axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
           .then((response) => {
-            toast.success(response.data.message);
           })
       }
     });

@@ -1,13 +1,16 @@
 import { Avatar, Button, Textarea, WrapItem } from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { Context } from "../Context/MyContext";
+import CommentCard from "../Component/CommentCard";
 
 const BlogDetails = () => {
+  const { user } = useContext(Context);
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [comments, setComments] = useState([]);
   const {
     register,
     handleSubmit,
@@ -15,20 +18,53 @@ const BlogDetails = () => {
   } = useForm();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/blogs/id/${id}`).then((res) => {
-      setData(res.data);
-    })
+    axios
+      .get(`http://localhost:5000/blogs/id/${id}`, { withCredentials: true })
+      .then((res) => {
+        setData(res.data);
+      });
   }, [id]);
 
-  console.log(data);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/comments/${id}`, { withCredentials: true })
+      .then((res) => {
+        setComments(res.data);
+      });
+  }, [id]);
 
-  const {_id, title, image_url, long_description, short_description, category } = data;
 
+  const {
+    _id,
+    title,
+    image_url,
+    long_description,
+    short_description,
+    category,
+  } = data;
 
-  console.log(id);
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (data, event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    
+    const commentData = {
+      blogId: _id,
+      commentText: data.comment,
+      userName: user?.displayName,
+      userPhoto: user?.photoURL,
+      userEmail: user?.email,
+    };
+  console.log(commentData)
+    axios.post("http://localhost:5000/comments", commentData, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.error("Error submitting comment:", error);
+        // Handle the error appropriately (e.g., display an error message to the user)
+      });
   };
+  
+  
 
   return (
     <div>
@@ -47,7 +83,7 @@ const BlogDetails = () => {
           </div>
           <div className="comment-form flex w-full gap-2">
             <WrapItem>
-              <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+              <Avatar name={user?.displayName} src={user?.photoURL} />
             </WrapItem>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Textarea
@@ -65,7 +101,9 @@ const BlogDetails = () => {
 
         {/* Comments */}
         <div className="w-full">
-          <h1>Comments</h1>
+          {
+            comments.map((comment) => <CommentCard key={comment._id} comment={comment} ></CommentCard> )
+          }
         </div>
       </div>
     </div>
