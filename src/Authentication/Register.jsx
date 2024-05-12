@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { Context } from "../Context/MyContext";
 import { Input } from "@chakra-ui/react";
+import registerImg from "../assets/register.svg";
 
 const Register = () => {
   const { profileUpdate, registerUser, setLoader, isChecked } = useContext(Context);
@@ -45,11 +46,18 @@ const Register = () => {
       {/* <Helmet>
         <title>Register Page</title>
       </Helmet> */}
-      <div className={`w-full my-10 mx-auto max-w-md p-4 rounded-md shadow sm:p-8  ${isChecked ? "bg-base-200 " : "bg-base-100 text-white"}`}>
         <h2 className="mb-3 text-3xl font-semibold text-center">
           Create your account
         </h2>
-        <form
+      <div className={`w-full mx-auto p-4 rounded-md shadow sm:p-8  ${isChecked ? "bg-base-200 " : "bg-base-100 text-white grid grid-cols-1 lg:grid-cols-2 gap-5"}`}>
+
+        <div>
+          <img src={registerImg} alt="" />
+        </div>
+
+        {/* form */}
+       <div>
+       <form
           onSubmit={handleSubmit(onSubmit)}
           noValidate
           className="space-y-8"
@@ -150,6 +158,7 @@ const Register = () => {
             Sign In here
           </Link>
         </p>
+       </div>
       </div>
     </>
   );

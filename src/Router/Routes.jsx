@@ -9,6 +9,7 @@ import Wishlist from "../Pages/Wishlist";
 import FeaturedBlogs from "../Pages/FeaturedBlogs";
 import EditBlog from "../Pages/EditBlog";
 import BlogDetails from "../Pages/BlogDetails";
+import PrivateRoute from "../Authentication/PrivateRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -49,7 +50,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/blogdetails/:id",
-                element: <BlogDetails />
+                element: <PrivateRoute><BlogDetails/></PrivateRoute>
             }
         ]
     }
