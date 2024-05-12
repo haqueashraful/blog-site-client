@@ -1,10 +1,23 @@
 import { Input, Textarea } from "@chakra-ui/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import Select from "react-select";
 const EditBlog = () => {
-
+  // const data = useLoaderData();
+  const [data , setData] = useState([]);
   const {id} = useParams();
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/blogs/id/${id}`, {withCredentials: true}).then((response) => {
+      setData(response.data);
+      console.log(response.data);
+    });
+  }, [id])
+  console.log(data)
+
   console.log(id)
     const { register, handleSubmit, formState: { errors } } = useForm();
   

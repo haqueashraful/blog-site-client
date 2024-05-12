@@ -50,7 +50,8 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/blogdetails/:id",
-                element: <PrivateRoute><BlogDetails/></PrivateRoute>
+                element: <PrivateRoute><BlogDetails/></PrivateRoute>,
+                // loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`, {credentials: "include"})
             }
         ]
     }

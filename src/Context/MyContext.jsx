@@ -78,11 +78,11 @@ export const MyContext = ({ children }) => {
       setLoader(true);
       setUser(currentUser);
       setStateLoader(false);
-      setLoader(false);
       if (currentUser) {
                axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true})
           .then((response) => {
             console.log(response.data)
+            setLoader(false);
           });
       } else {
         axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
@@ -94,6 +94,25 @@ export const MyContext = ({ children }) => {
       unsubscribe();
     };
   }, []);
+
+  // handle theme
+  const handleChange = () => {
+    const newChecked = !isChecked;
+    setIsChecked(newChecked);
+    localStorage.setItem("isChecked", newChecked);
+  };
+  
+  useEffect(() => {
+    const storedChecked = localStorage.getItem("isChecked");
+    if (storedChecked !== null) {
+      setIsChecked(storedChecked === "true");
+    }
+  }, []);
+  
+  useEffect(() => {
+    const newTheme = isChecked ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", newTheme);
+  }, [isChecked]);
 
 
   const handleAddToWishlist = (blog) => {
@@ -129,6 +148,7 @@ export const MyContext = ({ children }) => {
       setIsChecked,
       handleAddToWishlist,
       handleRemoveWishlist,
+      handleChange,
       wishlist,
     //   handleChange,
       isChecked,
