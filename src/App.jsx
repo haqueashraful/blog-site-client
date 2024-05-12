@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import EditBlog from './Pages/EditBlog'
 import RecentBlog from './Component/RecentBlog'
+import Framer from './Component/Framer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,6 +10,8 @@ function App() {
     <>
         <RecentBlog />
         {/* <EditBlog /> */}
+
+        <Framer />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>

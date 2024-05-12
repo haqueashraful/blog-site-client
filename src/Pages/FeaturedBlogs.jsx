@@ -11,6 +11,7 @@ const FeaturedBlogs = () => {
     })
   }, []);
 
+  
 
   return (
     <div>
