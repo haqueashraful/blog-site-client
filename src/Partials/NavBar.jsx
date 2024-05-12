@@ -1,8 +1,20 @@
 import { useContext } from "react";
 import { Context } from "../Context/MyContext";
 import { Link, NavLink } from "react-router-dom";
-import { Avatar, WrapItem, background } from "@chakra-ui/react";
+import {
+  Avatar,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  WrapItem,
+} from "@chakra-ui/react";
 import { Tooltip } from "react-tooltip";
+import { IoMdAdd, IoMdHome } from "react-icons/io";
+import { RiDashboardHorizontalLine } from "react-icons/ri";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { MdFeaturedVideo } from "react-icons/md";
+import { FaStar } from "react-icons/fa6";
 
 const NavBar = () => {
   const { user, logOutUser, handleChange, isChecked } = useContext(Context);
@@ -11,86 +23,85 @@ const NavBar = () => {
     logOutUser();
   };
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+    <div className="flex justify-between items-center py-2">
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label="Options"
+          icon={<RxHamburgerMenu />}
+          variant="outline"
+          className="!text-teal-600"
+        />
+        <MenuList className="space-y-2">
+          <NavLink
+            type="button"
+            className={({ isActive }) =>
+              isActive
+                ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
+                : " flex justify-start items-center gap-1 px-3"
+            }
+            to="/"
           >
-            <li>
-              <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "!bg-teal-500 !text-white" : ""
-                 }
-                to="/"
-              >
-                Homepage
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                  className={({ isActive }) =>
-                 isActive ? "!bg-teal-500 !text-white" : ""
-              }
-                to="/addblog"
-              >
-                Add Blog
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                  className={({ isActive }) =>
-                 isActive ? "!bg-teal-500 !text-white" : ""
-              }
-                to="/allblogs"
-              >
-                All blogs
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                 className={({ isActive }) =>
-                 isActive ? "!bg-teal-500 !text-white" : ""
-              }
-                to="/featuredblog"
-              >
-                Featured Blogs
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-               className={({ isActive }) =>
-                 isActive ? "!bg-teal-500 !text-white" : ""
-              }
-                to="/wishlist"
-              >
-                Wishlist
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="navbar-center">
+            <IoMdHome className="text-xl mr-3" />
+            <span>Homepage</span>
+          </NavLink>
+          <NavLink
+            type="button"
+            id="menu-list-:rb:-menuitem-:rd:"
+            className={({ isActive }) =>
+              isActive
+                ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
+                : " flex justify-start items-center gap-1 px-3"
+            }
+            to="/addblog"
+          >
+            <IoMdAdd className="text-xl mr-3" />
+            <span>Add Blog</span>
+          </NavLink>
+          <NavLink
+            type="button"
+            className={({ isActive }) =>
+              isActive
+                ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
+                : " flex justify-start items-center gap-1 px-3"
+            }
+            to="/allblogs"
+          >
+            <RiDashboardHorizontalLine className="text-xl mr-3" />
+            <span> All blogs</span>
+          </NavLink>
+          <NavLink
+            type="button"
+            className={({ isActive }) =>
+              isActive
+                ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
+                : " flex justify-start items-center gap-1 px-3"
+            }
+            to="/featuredblog"
+          >
+            <MdFeaturedVideo className="text-xl mr-3" />
+            <span>Featured Blog</span>
+          </NavLink>
+          <NavLink
+            type="button"
+            id="menu-list-:rb:-menuitem-:rd:"
+            className={({ isActive }) =>
+              isActive
+                ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
+                : " flex justify-start items-center gap-1 px-3"
+            }
+            to="/wishlist"
+          >
+            <FaStar className="text-xl mr-3" />
+            <span>Wishlist</span>
+          </NavLink>
+        </MenuList>
+      </Menu>
+
+      <div className="">
         <a className="btn btn-ghost text-xl">HA Blog</a>
       </div>
-      <div className="navbar-end flex gap-2">
+      <div className="flex gap-2">
         {user ? (
           <>
             <WrapItem
@@ -109,7 +120,7 @@ const NavBar = () => {
             />
             <button
               onClick={handleLogOut}
-              className="btn btn-outline btn-warning ml-2"
+              className="btn btn-outline !outline-teal-500  hover:text-white ml-2"
             >
               Logout
             </button>

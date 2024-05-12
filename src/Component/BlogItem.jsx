@@ -62,16 +62,16 @@ const BlogItem = ({ blog }) => {
         {short_description}
       </motion.p>
       <motion.p className="text-xs text-gray-500"> {long_description}</motion.p>
-      <motion.div>
+      <motion.div className="w-full flex justify-between mt-5">
         <motion.button
           onClick={() => handleAddToWishlist(_id)}
-          className="bg-blue-500 text-white py-1 px-4 rounded-md"
+          className="bg-teal-500 text-white py-1 px-4 rounded-md"
         >
           Add to Wishlist
         </motion.button>
 
         <motion.button
-          className="bg-blue-500 text-white py-1 px-4 rounded-md ml-4"
+          className="bg-teal-500 text-white py-1 px-4 rounded-md ml-4"
           onClick={() => handleDetails(_id)}
         >
           Details
