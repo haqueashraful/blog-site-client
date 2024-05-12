@@ -36,7 +36,7 @@ const EditBlog = () => {
    <Select
      id="category"
      {...register("category", { required: "Category is required" })}
-     options={[{ value: "tech", label: "Technology" }, { value: "food", label: "Food" }, { value: "travel", label: "Travel" }]} // Example categories
+     options={[{ value: "technology", label: "Technology" }, { value: "food", label: "Food" }, { value: "travel", label: "Travel" }]} // Example categories
    />
    {errors.category && <span className="text-red-500">{errors.category.message}</span>}
  </div>

@@ -87,7 +87,7 @@ const AddBlogs = () => {
             value={selectedCategory}
             onChange={handleCategoryChange}
             options={[
-              { value: "tech", label: "Technology" },
+              { value: "technology", label: "Technology" },
               { value: "food", label: "Food" },
               { value: "travel", label: "Travel" },
             ]} // Example categories

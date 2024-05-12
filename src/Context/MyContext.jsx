@@ -12,6 +12,7 @@ export const MyContext = ({ children }) => {
     const [loader, setLoader] = useState(true);
     const [stateLoader, setStateLoader] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
+    const [wishlist, setWishlist] = useState(false);
   
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
@@ -98,6 +99,20 @@ export const MyContext = ({ children }) => {
   const handleAddToWishlist = (blog) => {
     // Implement functionality to add blog to wishlist
     console.log('Added to wishlist:', blog);
+    setWishlist(true);
+    axios.post("http://localhost:5000/wishlist", blog, { withCredentials: true })
+  };
+  
+  const handleRemoveWishlist = (id) => {
+    console.log(id);
+    axios.delete(`http://localhost:5000/wishlist/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setWishlist(true);
+      })
+      .catch((error) => {
+        console.error("Error removing item from wishlist:", error);
+      });
   };
   
     const info = {
@@ -113,6 +128,8 @@ export const MyContext = ({ children }) => {
       setStateLoader,
       setIsChecked,
       handleAddToWishlist,
+      handleRemoveWishlist,
+      wishlist,
     //   handleChange,
       isChecked,
       stateLoader,

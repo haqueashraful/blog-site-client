@@ -13,7 +13,7 @@ const SelectItem = ({ selectedCategory, handleCategoryChange }) => {
         onChange={handleCategoryChange}
         options={[
             { value: "", label: "All" },
-          { value: "tech", label: "Technology" },
+          { value: "technology", label: "Technology" },
           { value: "food", label: "Food" },
           { value: "travel", label: "Travel" }
         ]}
