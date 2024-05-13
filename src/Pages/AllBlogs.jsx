@@ -3,28 +3,33 @@ import axios from "axios";
 import SearchBar from "../Component/SearchBar";
 import BlogList from "../Component/BlogList";
 import SelectItem from "../Component/SelectItem";
+import { useQuery } from "@tanstack/react-query";
 
 const AllBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  
+  let url = `http://localhost:5000/blogs`;
   useEffect(() => {
-    let url = `http://localhost:5000/blogs`;
-
-if (search || selectedCategory) {
-  url += `?search=${search || ''}&category=${selectedCategory ? selectedCategory.value || '' : ''}`;
-}
-    axios.get(url)
-      .then(response => {
-        console.log(response.data);
-        setBlogs(response.data);
-        setFilteredBlogs(response.data);
-      })
-      .catch(error => console.error('Error fetching blogs:', error));
+    if (search || selectedCategory) {
+      url += `?search=${search || ""}&category=${
+        selectedCategory ? selectedCategory.value || "" : ""
+      }`;
+    }
   }, [search, selectedCategory]);
+
+  const { data } = useQuery({
+    queryKey: ["blogs", search, selectedCategory],
+    queryFn: () =>
+      axios
+        .get(url)
+        .then((response) => {
+          return response.data;
+        })
+        .catch((error) => console.error("Error fetching blogs:", error)),
+  });
+
+  console.log(data);
 
   const handleCategoryChange = (selectedOption) => {
     setSelectedCategory(selectedOption);
@@ -47,7 +52,7 @@ if (search || selectedCategory) {
         </div>
         <SearchBar onSearch={handleSearch} />
       </div>
-      <BlogList blogs={filteredBlogs} />
+      <BlogList blogs={data} />
     </div>
   );
 };
