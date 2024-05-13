@@ -9,7 +9,7 @@ const AllBlogs = () => {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  let url = `http://localhost:5000/blogs`;
+  let url = `https://blog-site-server-lemon.vercel.app/blogs`;
   useEffect(() => {
     if (search || selectedCategory) {
       url += `?search=${search || ""}&category=${
@@ -43,7 +43,7 @@ const AllBlogs = () => {
     <div>
       <h1 className="text-3xl font-semibold mb-4">All Blogs</h1>
       <div className="flex w-full items-center justify-between">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center my-3">
           <span className="text-xl">Filter:</span>
           <SelectItem
             selectedCategory={selectedCategory}

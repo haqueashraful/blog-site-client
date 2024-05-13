@@ -20,28 +20,21 @@ const CommentCard = ({ comment, setUpdateComment }) => {
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
-    // setEditButtonText(isEditing ? "Edit" : "Cancel");
   };
 
   const handleCancelClick = () => {
     setIsEditing(false);
-    // setEditButtonText("Edit");
     setEditedComment(commentText);
   };
 
+
+  const {mutateAsync} = useMutation({
+    mutationFn: (data) => axios.patch(`https://blog-site-server-lemon.vercel.app/comments/${_id}`, data, { withCredentials: true }),
+  })
   const handleSendClick = () => {
     console.log("Updated Comment:", editedComment);
-    axios
-      .patch(`http://localhost:5000/comments/${_id}`, { commentText: editedComment }, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setUpdateComment(true);
-      })
-      .catch((error) => {
-        console.error("Error updating comment:", error);
-        // Handle error here
-      });
+    mutateAsync({commentText: editedComment})
+   
     setIsEditing(false);
   };
   

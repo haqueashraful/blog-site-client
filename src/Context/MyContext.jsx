@@ -87,6 +87,7 @@ export const MyContext = ({ children }) => {
       } else {
         axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
           .then((response) => {
+            setLoader(false);
           })
       }
     });

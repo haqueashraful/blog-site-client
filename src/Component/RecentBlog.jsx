@@ -9,7 +9,7 @@ const RecentBlog = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/blogs?recent=true").then((response) => {
+    axios.get("https://blog-site-server-lemon.vercel.app/blogs?recent=true").then((response) => {
       setData(response.data);
       console.log(response.data);
     });

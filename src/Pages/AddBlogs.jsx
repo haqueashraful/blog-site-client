@@ -29,7 +29,7 @@ const AddBlogs = () => {
     data.createdTime = localDateTime;
   
     console.log(data);
-    axios.post("http://localhost:5000/blogs", data).then((res) => {
+    axios.post("https://blog-site-server-lemon.vercel.app/blogs", data).then((res) => {
       console.log(res.data);
     });
   };
