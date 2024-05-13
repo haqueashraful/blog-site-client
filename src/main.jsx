@@ -7,6 +7,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { MyContext } from "./Context/MyContext.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import 'react-photo-view/dist/react-photo-view.css';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();

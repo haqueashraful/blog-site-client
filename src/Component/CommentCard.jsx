@@ -5,47 +5,82 @@ import { CiEdit } from "react-icons/ci";
 import { MdOutlineEditOff } from "react-icons/md";
 import { LuSend } from "react-icons/lu";
 import axios from "axios";
+import {  useMutation, useQueryClient } from "@tanstack/react-query";
+import { FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const CommentCard = ({ comment, setUpdateComment }) => {
   const { _id, commentText, userName, userPhoto, userEmail } = comment;
   const { user, loader } = useContext(Context);
   const [isEditing, setIsEditing] = useState(false);
   const [editedComment, setEditedComment] = useState(commentText);
-  const [editButtonText, setEditButtonText] = useState("Edit");
 
+  const queryClient = useQueryClient();
 
-  if (loader) {
-    return <div>Loading...</div>;
-  }
+  const updatedComment = useMutation(
+ {
+  mutationFn: async (data) => {
+    await axios.patch(
+      `https://blog-site-server-lemon.vercel.app/comments/${_id}`,
+      data,
+      { withCredentials: true }
+    );
+  },
+    onSuccess: () => {
+      toast.success("Comment updated successfully");
+      setUpdateComment((prev) => !prev);
+      queryClient.invalidateQueries(["commentsData"]);
+    },
+  },
+  );
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
 
   const handleCancelClick = () => {
+    // Only update editedComment if the user made changes
+    if (editedComment !== commentText) {
+      setEditedComment(commentText);
+    }
     setIsEditing(false);
-    setEditedComment(commentText);
   };
 
+  const handleSendClick = async () => {
+    console.log(editedComment)
+    await updatedComment.mutate({ commentText: editedComment }); 
+    setIsEditing(false);
+  };
 
-  const {mutateAsync} = useMutation({
-    mutationFn: (data) => axios.patch(`https://blog-site-server-lemon.vercel.app/comments/${_id}`, data, { withCredentials: true }),
+  const deletedComment = useMutation({
+    mutationFn: async () => {
+      await axios.delete(`https://blog-site-server-lemon.vercel.app/comments/${_id}`, { withCredentials: true })
+    },
+    onSuccess: () => {
+      toast.success("Comment deleted successfully");
+      setUpdateComment((prev) => !prev);
+      queryClient.invalidateQueries(["commentsData"]);
+    },
   })
-  const handleSendClick = () => {
-    console.log("Updated Comment:", editedComment);
-    mutateAsync({commentText: editedComment})
-   
-    setIsEditing(false);
-  };
-  
+
+  const handleDelete = async () => {
+    await deletedComment.mutate()
+  }
+
+  if (loader) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex flex-col gap-4 border w-full px-3 py-2 rounded-md">
       <div className="flex items-center gap-3">
         <img className="w-10 h-10 rounded-full" src={userPhoto} alt="" />
         <h1 className="text-lg text-black font-bold">{userName}</h1>
-
         {user?.email === userEmail && (
-          <div className="ml-auto">
+          <div className="ml-auto flex gap-3">
+            <Button onClick={handleDelete}>
+            <FaTrash />
+            </Button>
             <Button onClick={isEditing ? handleCancelClick : handleEditClick}>
               {isEditing ? <MdOutlineEditOff /> : <CiEdit />}
             </Button>
