@@ -13,7 +13,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const BlogDetails = () => {
-  const { user, loader } = useContext(Context);
+  const { user, loader, } = useContext(Context);
   const { id } = useParams();
   // const [data, setData] = useState({});
   // const [comments, setComments] = useState([]);
@@ -23,6 +23,7 @@ const BlogDetails = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -65,14 +66,14 @@ const BlogDetails = () => {
           withCredentials: true,
         })
         .then(() => {
-          toast.success("Comment deleted successfully");
+          toast.success("Comment added successfully");
           setUpdateComment((prev) => !prev);
         }),
   });
 
   const onSubmit = (data, event) => {
     event.preventDefault();
-
+    reset();
     const commentData = {
       blogId: _id,
       commentText: data.comment,
@@ -80,7 +81,6 @@ const BlogDetails = () => {
       userPhoto: user?.photoURL,
       userEmail: user?.email,
     };
-    console.log(commentData);
     mutate(commentData);
   };
 
@@ -98,7 +98,7 @@ const BlogDetails = () => {
   });
 
   const handleDelete = () => {
-    deletedBLog.mutate();
+    deletedBLog.mutateAsync();
   };
 
   if (loader) {
@@ -107,9 +107,10 @@ const BlogDetails = () => {
 
   return (
     <PhotoProvider>
-      <motion.div className="w-full flex gap-2 relative">
+      <motion.div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3">
         {/* Blog Details */}
-        <motion.div className="w-1/2 sticky top-0">
+        <motion.div className="w-full lg:relative">
+        <motion.div className=" w-full   lg:sticky top-0 ">
           <motion.div className="w-full p-2 border rounded-md overflow-hidden">
             <PhotoView src={image_url}>
               <motion.img
@@ -160,9 +161,9 @@ const BlogDetails = () => {
             </form>
           </motion.div>
         </motion.div>
-
+        </motion.div>
         {/* Comments */}
-        <motion.div className="w-1/2 flex flex-col gap-2">
+        <motion.div className=" w-full flex flex-col gap-2">
           {comments.map((comment) => (
             <CommentCard
               key={comment._id}

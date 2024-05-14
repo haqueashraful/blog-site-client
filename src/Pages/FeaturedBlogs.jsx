@@ -10,7 +10,7 @@ const FeaturedBlogs = () => {
   const [featuredBlogs, setFeaturedBlogs] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:5000/featured-blogs")
+    axios.get("https://blog-site-server-lemon.vercel.app/featured-blogs")
       .then((response) => {
         setFeaturedBlogs(response.data);
       })

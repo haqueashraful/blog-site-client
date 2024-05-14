@@ -1,14 +1,10 @@
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { CiEdit } from "react-icons/ci";
 import { Context } from "../Context/MyContext";
-import { toast } from "react-toastify";
-import axios from "axios";
 
 const BlogItem = ({ blog }) => {
-  const { handleAddToWishlist,  loader } = useContext(Context);
+  const { handleAddToWishlist } = useContext(Context);
   const navigate = useNavigate();
 
   const {
@@ -26,9 +22,7 @@ const BlogItem = ({ blog }) => {
   };
 
 
-  if (loader) {
-    return <div>Loading...</div>;
-  }
+
 
 
 
@@ -58,7 +52,7 @@ const BlogItem = ({ blog }) => {
       </motion.p>
       <motion.div className="w-full flex justify-between mt-5">
         <motion.button
-          onClick={() => handleAddToWishlist(_id)}
+          onClick={() => handleAddToWishlist(blog)}
           className="bg-teal-500 text-white py-1 px-4 rounded-md"
         >
           Add to Wishlist

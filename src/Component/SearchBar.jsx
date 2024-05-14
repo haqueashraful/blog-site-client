@@ -5,6 +5,7 @@ const SearchBar = ({ onSearch }) => {
   const [search, setSearch] = useState('');
 
   const handleChange = (e) => {
+    e.preventDefault()
     const value = e.target.value;
     const searctValue = value.toLowerCase() 
     setSearch(searctValue);

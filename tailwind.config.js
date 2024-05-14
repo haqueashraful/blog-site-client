@@ -8,7 +8,11 @@ export default {
     themes: [ "light", "dark" ],
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        secondary: "#14B8A6",
+      }
+    },
   },
   plugins: [require("daisyui")],
  }

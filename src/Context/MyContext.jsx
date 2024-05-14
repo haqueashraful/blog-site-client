@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import auth from "../Firebase/firebase.config";
 import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const Context = createContext();
 
@@ -79,13 +80,13 @@ export const MyContext = ({ children }) => {
       setUser(currentUser);
       setStateLoader(false);
       if (currentUser) {
-               axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true})
+               axios.post("https://blog-site-server-lemon.vercel.app/jwt", loggedUser, { withCredentials: true})
           .then((response) => {
             console.log(response.data)
             setLoader(false);
           });
       } else {
-        axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
+        axios.post("https://blog-site-server-lemon.vercel.app/logout", loggedUser, { withCredentials: true })
           .then((response) => {
             setLoader(false);
           })
@@ -115,25 +116,29 @@ export const MyContext = ({ children }) => {
     document.documentElement.setAttribute("data-theme", newTheme);
   }, [isChecked]);
 
-
+const queryClient = useQueryClient();
   const handleAddToWishlist = (blog) => {
-    // Implement functionality to add blog to wishlist
     console.log('Added to wishlist:', blog);
     setWishlist(true);
-    axios.post("http://localhost:5000/wishlist", blog, { withCredentials: true })
+    axios.post("https://blog-site-server-lemon.vercel.app/wishlist", blog, { withCredentials: true })
+      .then((response) => {
+        toast.success("Item added to wishlist");
+      })
   };
   
+
+  const deleteWishlist = useMutation({
+    mutationFn: (id) => axios.delete(`https://blog-site-server-lemon.vercel.app/wishlist/${id}`, { withCredentials: true }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["wishlist"]);
+    },
+  })
   const handleRemoveWishlist = (id) => {
-    console.log(id);
-    axios.delete(`http://localhost:5000/wishlist/${id}`)
-      .then((response) => {
-        console.log(response.data);
-        setWishlist(true);
-      })
-      .catch((error) => {
-        console.error("Error removing item from wishlist:", error);
-      });
+    deleteWishlist.mutate(id);
+    console.log(id)
   };
+
+
   
     const info = {
       setUser,

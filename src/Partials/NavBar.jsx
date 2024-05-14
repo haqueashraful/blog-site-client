@@ -23,14 +23,14 @@ const NavBar = () => {
     logOutUser();
   };
   return (
-    <div className="flex justify-between items-center py-2">
+    <div className="flex justify-between items-center py-1 bg-white rounded-l-full rounded-r-full my-3 border px-5 shadow-md">
       <Menu>
         <MenuButton
           as={IconButton}
           aria-label="Options"
           icon={<RxHamburgerMenu />}
           variant="outline"
-          className="!text-teal-600"
+          className="!text-teal-600 !border !border-teal-600 !rounded-full"
         />
         <MenuList className="space-y-2">
           <NavLink
@@ -99,7 +99,7 @@ const NavBar = () => {
       </Menu>
 
       <div className="">
-        <a className="btn btn-ghost text-xl">HA Blog</a>
+      <a className={`btn btn-ghost text-xl ${isChecked ? "text-secondary" : ""}`}>HA Blog</a>
       </div>
       <div className="flex gap-2">
         {user ? (
@@ -120,7 +120,7 @@ const NavBar = () => {
             />
             <button
               onClick={handleLogOut}
-              className="btn btn-outline !outline-teal-500  hover:text-white ml-2"
+              className="btn btn-outline !outline-teal-500 hover:bg-secondary !py-2  hover:text-white ml-2"
             >
               Logout
             </button>
@@ -128,14 +128,14 @@ const NavBar = () => {
         ) : (
           <Link
             to="/login"
-            className="btn btn-outline btn-success hover:!bg-green-300"
+            className="btn btn-outline btn-success !py-2 hover:!bg-green-300"
           >
             Login
           </Link>
         )}
 
         <div>
-          <input id="checkbox" type="checkbox" onChange={handleChange} />
+          <input id="checkbox" type="checkbox" onChange={handleChange} checked={isChecked} />
           <label className="switch" htmlFor="checkbox">
             <svg
               xmlns="http://www.w3.org/2000/svg"

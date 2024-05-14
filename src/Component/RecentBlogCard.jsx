@@ -16,7 +16,7 @@ const RecentBlogCard = ({ item, data }) => {
     // Fetch wishlist data from the API
     const fetchWishlist = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/wishlist");
+        const response = await axios.get("https://blog-site-server-lemon.vercel.app/wishlist");
         setWishlist(response.data);
       } catch (error) {
         console.error("Error fetching wishlist:", error);
@@ -42,14 +42,15 @@ const RecentBlogCard = ({ item, data }) => {
   };
 
   return (
-    <div>
+    <>
       <motion.div
+        className="flex flex-col gap-3 p-2 border"
         key={item._id}
         layoutId={item._id}
         onClick={() => setSelectedId(item._id)}
       >
         <motion.img src={item.image_url} alt={item.title} />
-        <motion.h1 className="text-lg font-bold">{item.category}</motion.h1>
+        <motion.h1 className="text-lg text-white text-center w-1/3 bg-secondary px-3 py-1 rounded-l-full rounded-r-full">{item.category}</motion.h1>
         <motion.h2 className="text-lg font-bold">{item.title}</motion.h2>
       </motion.div>
 
@@ -95,11 +96,11 @@ const RecentBlogCard = ({ item, data }) => {
                 alt={data.find((item) => item._id === selectedId)?.title}
                 style={{ width: "100%", height: "auto" }}
               />
-              <h2 className="text-xl font-bold mb-2">
+              <h2 className="text-xl font-semibold mb-2">
                 {data.find((item) => item._id === selectedId)?.title}
               </h2>
-              <h2>
-                <span className="font-bold">Category:</span>
+              <h2 className="text-lg font-bold mb-2 text-secondary">
+                <span className="text-black font-normal">Category:</span>
                 {data.find((item) => item._id === selectedId)?.category}
               </h2>
               <h5>
@@ -134,7 +135,7 @@ const RecentBlogCard = ({ item, data }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 

@@ -1,10 +1,11 @@
-import { Input, Select, Textarea } from "@chakra-ui/react";
+import { Input,  Select,  Textarea } from "@chakra-ui/react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import editImage from "../assets/edit.svg";
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -48,21 +49,33 @@ useEffect(() => {
   setValue("category", category);
 }, [data]);
 
-const {mutateAsync} = useMutation({
- mutationFn: (data) => axios.patch(`https://blog-site-server-lemon.vercel.app/blogs/${id}`, data, { withCredentials: true }),
+const updateBlog = useMutation({
+ mutationFn: (data) => axios.patch(`https://blog-site-server-lemon.vercel.app/blogs/${id}`, data, { withCredentials: true })
+ .then((res) => res.data),
  onSuccess: () => {
   toast.success("Blog updated successfully");
   navigate(`/blogdetails/${id}`);
  }
 })
 
-  const onSubmit = (data) => {
-   mutateAsync(data)
+  const onSubmit = async (data) => {
+   await updateBlog.mutate(data)
+
+    console.log(data)
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl mx-auto">
+    <>
+
+    <div className="text-center">
+      <h1 className="text-3xl font-bold text-center my-5">Edit Blog</h1>
+    </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-5 justify-center items-center">
+        <div className="w-full border">
+          <img src={editImage} alt="" />
+        </div>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl border p-2 rounded-md mx-auto w-full">
         <div className="mb-4">
           <label htmlFor="title" className="block font-medium">
             Title
@@ -147,7 +160,8 @@ const {mutateAsync} = useMutation({
           Submit
         </button>
       </form>
-    </div>
+      </div>
+    </>
   );
 };
 

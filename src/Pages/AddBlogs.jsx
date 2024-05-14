@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 import { Context } from "../Context/MyContext";
+import addImg from '../assets/add.svg'
 
 const AddBlogs = () => {
   const { user } = useContext(Context);
@@ -13,6 +14,7 @@ const AddBlogs = () => {
     handleSubmit,
     formState: { errors },
     setValue,
+    reset,
   } = useForm();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -31,6 +33,7 @@ const AddBlogs = () => {
     console.log(data);
     axios.post("https://blog-site-server-lemon.vercel.app/blogs", data).then((res) => {
       console.log(res.data);
+      reset();
     });
   };
   
@@ -41,8 +44,15 @@ const AddBlogs = () => {
   };
 
   return (
+    <>
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl mx-auto">
+      <h1 className="text-3xl font-bold text-center my-5">Add New Blog</h1>
+    </div>
+    <div className="my-5  grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-center">
+      <div className="w-full border">
+      <img src={addImg} alt="" />
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl border p-2 rounded-md  mx-auto w-full">
         {/* title */}
         <div className="mb-4">
           <label htmlFor="title" className="block font-medium">
@@ -83,6 +93,7 @@ const AddBlogs = () => {
             Category
           </label>
           <Select
+          className=" text-black"
             id="category"
             value={selectedCategory}
             onChange={handleCategoryChange}
@@ -145,6 +156,7 @@ const AddBlogs = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

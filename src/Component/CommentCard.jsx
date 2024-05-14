@@ -39,7 +39,6 @@ const CommentCard = ({ comment, setUpdateComment }) => {
   };
 
   const handleCancelClick = () => {
-    // Only update editedComment if the user made changes
     if (editedComment !== commentText) {
       setEditedComment(commentText);
     }
@@ -72,10 +71,10 @@ const CommentCard = ({ comment, setUpdateComment }) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 border w-full px-3 py-2 rounded-md">
-      <div className="flex items-center gap-3">
+<div className={`flex flex-col gap-4 border w-full px-3 py-2 rounded-md  `}>
+      <div className={`flex items-center gap-3 `}>
         <img className="w-10 h-10 rounded-full" src={userPhoto} alt="" />
-        <h1 className="text-lg text-black font-bold">{userName}</h1>
+        <h1 className="text-lg font-bold">{userName}</h1>
         {user?.email === userEmail && (
           <div className="ml-auto flex gap-3">
             <Button onClick={handleDelete}>

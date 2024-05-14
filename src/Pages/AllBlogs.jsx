@@ -18,7 +18,7 @@ const AllBlogs = () => {
     }
   }, [search, selectedCategory]);
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ["blogs", search, selectedCategory],
     queryFn: () =>
       axios
@@ -39,6 +39,10 @@ const AllBlogs = () => {
     setSearch(text);
     console.log(text);
   };
+
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-4">All Blogs</h1>

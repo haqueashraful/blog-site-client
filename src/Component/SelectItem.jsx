@@ -3,11 +3,8 @@ import Select from "react-select";
 const SelectItem = ({ selectedCategory, handleCategoryChange }) => {
   return (
     <div className=" flex gap-4">
-      {/* <label htmlFor="category" className="block font-medium">
-        Category
-      </label> */}
       <Select
-      className="w-60"
+      className="w-60 text-black"
         id="category"
         value={selectedCategory || "Filter by Category"}
         onChange={handleCategoryChange}
