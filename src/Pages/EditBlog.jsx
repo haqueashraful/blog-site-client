@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import editImage from "../assets/edit.svg";
+import Loading from "../Component/Loading";
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -63,6 +64,10 @@ const updateBlog = useMutation({
 
     console.log(data)
   };
+
+  if(isLoading){
+    return <Loading />
+  }
 
   return (
     <>

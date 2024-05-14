@@ -24,7 +24,7 @@ const NavBar = () => {
   };
   return (
     <div className="flex justify-between items-center py-1 bg-white rounded-l-full rounded-r-full my-3 border px-5 shadow-md">
-      <Menu>
+      <Menu className="z-auto">
         <MenuButton
           as={IconButton}
           aria-label="Options"
@@ -32,7 +32,7 @@ const NavBar = () => {
           variant="outline"
           className="!text-teal-600 !border !border-teal-600 !rounded-full"
         />
-        <MenuList className="space-y-2">
+        <MenuList className="space-y-2 z-auto">
           <NavLink
             type="button"
             className={({ isActive }) =>
@@ -99,7 +99,7 @@ const NavBar = () => {
       </Menu>
 
       <div className="">
-      <a className={`btn btn-ghost text-xl ${isChecked ? "text-secondary" : ""}`}>HA Blog</a>
+      <a href="/" className={`btn btn-ghost text-xl ${isChecked ? "text-secondary" : ""}`}>HA Blog</a>
       </div>
       <div className="flex gap-2">
         {user ? (

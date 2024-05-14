@@ -3,6 +3,7 @@ import axios from "axios";
 import WishListCard from "../Component/WishListCard";
 import { useContext } from "react";
 import { Context } from "../Context/MyContext";
+import Loading from "../Component/Loading";
 
 const Wishlist = () => {
     const { wishlist } = useContext( Context );
@@ -19,7 +20,7 @@ const Wishlist = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div><Loading /></div>;
   }
 
   if (error) {

@@ -4,7 +4,7 @@ const SelectItem = ({ selectedCategory, handleCategoryChange }) => {
   return (
     <div className=" flex gap-4">
       <Select
-      className="w-60 text-black"
+      className="w-60 z-auto text-black"
         id="category"
         value={selectedCategory || "Filter by Category"}
         onChange={handleCategoryChange}

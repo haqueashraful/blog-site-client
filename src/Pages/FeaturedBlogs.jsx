@@ -45,11 +45,28 @@ const FeaturedBlogs = () => {
     }
   ];
 
-
+  const customStyle = {
+    headRow: {
+      style: {
+        backgroundColor: "#D9D9D9",
+      },
+    },
+    headCells: {
+      style: {
+        fontSize: "20px",
+        fontWeight: "bold",
+      },
+  },
+  cells: {
+    style: {
+      fontSize: "18px",
+    },
+  }
+}
   return (
-    <div>
-      <h2>Featured Blogs</h2>
-      <DataTable data={featuredBlogs} columns={columns} />
+    <div className="z-10 my-10">
+      <h2 className="text-3xl font-bold text-center my-5 border py-10  ">Featured Blogs</h2>
+      <DataTable data={featuredBlogs} columns={columns}  customStyles={customStyle}/>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import SearchBar from "../Component/SearchBar";
 import BlogList from "../Component/BlogList";
 import SelectItem from "../Component/SelectItem";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../Component/Loading";
 
 const AllBlogs = () => {
   const [search, setSearch] = useState("");
@@ -40,9 +41,9 @@ const AllBlogs = () => {
     console.log(text);
   };
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
+  // if (isPending) {
+  //   return <div><Loading /></div>;
+  // }
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-4">All Blogs</h1>

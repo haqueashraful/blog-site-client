@@ -48,7 +48,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/editblog/:id",
-                element: <EditBlog />
+                element: <PrivateRoute><EditBlog/></PrivateRoute>
             },
             {
                 path: "/blogdetails/:id",

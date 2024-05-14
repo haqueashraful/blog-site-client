@@ -11,6 +11,7 @@ import { CiEdit } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import Loading from "../Component/Loading";
 
 const BlogDetails = () => {
   const { user, loader, } = useContext(Context);
@@ -102,12 +103,12 @@ const BlogDetails = () => {
   };
 
   if (loader) {
-    return <div>Loading...</div>;
+    return <div><Loading /></div>;
   }
 
   return (
     <PhotoProvider>
-      <motion.div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3">
+      <motion.div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3 !z-auto">
         {/* Blog Details */}
         <motion.div className="w-full lg:relative">
         <motion.div className=" w-full   lg:sticky top-0 ">
