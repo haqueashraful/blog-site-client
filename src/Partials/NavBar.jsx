@@ -6,6 +6,7 @@ import {
   IconButton,
   Menu,
   MenuButton,
+  MenuItem,
   MenuList,
   WrapItem,
 } from "@chakra-ui/react";
@@ -102,7 +103,8 @@ const NavBar = () => {
       <a href="/" className={`btn btn-ghost text-xl ${isChecked ? "text-secondary" : ""}`}>HA Blog</a>
       </div>
       <div className="flex gap-2">
-        {user ? (
+      <div className=" hidden lg:flex">
+      {user ? (
           <>
             <WrapItem
               data-tooltip-id="my-tooltip"
@@ -133,7 +135,37 @@ const NavBar = () => {
             Login
           </Link>
         )}
+      </div>
 
+        <div className=" lg:hidden">
+        {
+          user ? (
+            <Menu>
+            <MenuButton
+             
+              variant="outline"
+              className="!text-teal-600 !border !border-teal-600 !rounded-full"
+            >
+              <WrapItem
+            >
+              <Avatar name={user?.displayName} src={user?.photoURL} />
+            </WrapItem>
+            </MenuButton>
+            <MenuList>
+              <MenuItem ><span className="text-xl">User:</span> {user?.displayName}</MenuItem>
+              <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+            </MenuList>
+          </Menu>
+          ): (
+            <Link
+            to="/login"
+            className="btn btn-outline btn-success !py-2 hover:!bg-green-300"
+          >
+            Login
+          </Link>
+          )
+        }
+        </div>
         <div>
           <input id="checkbox" type="checkbox" onChange={handleChange} checked={isChecked} />
           <label className="switch" htmlFor="checkbox">

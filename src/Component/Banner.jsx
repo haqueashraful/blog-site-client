@@ -25,14 +25,13 @@ import {
         className="my-10 px-2 lg:px-0"
       >
         <div className="flex flex-col lg:flex-row gap-3 justify-center items-center">
-          <div className="flex">
+          <div className="flex w-full">
             <div className="h-[300px] relative">
               <Image
                 objectFit="cover"
-                maxW={{ base: "100%", sm: "200px" }}
                 height={"full"}
                 src={techno}
-               
+                className="w-full"
               />
               <h1 className="flex flex-col justify-center items-center text-xl font-bold text-white absolute inset-0 z-10">
                 Technology
@@ -41,11 +40,10 @@ import {
             <div className="h-[300px] relative">
               <Image
                 objectFit="cover"
-                maxW={{ base: "100%", sm: "200px" }}
                 height={"full"}
                 src={food}
                 alt="Food"
-               
+                className="w-full"
               />
               <h1 className="flex flex-col justify-center items-center text-xl font-bold text-white absolute inset-0 z-10">
                 Food
@@ -54,11 +52,10 @@ import {
             <div className="h-[300px] relative">
               <Image
                 objectFit="cover"
-                maxW={{ base: "100%", sm: "200px" }}
                 height={"full"}
                 src={travel}
                 alt="Travel"
-               
+                className="w-full"
               />
               <h1 className="flex flex-col justify-center items-center text-xl font-bold text-white absolute inset-0 z-10">
                 Travel

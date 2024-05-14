@@ -29,7 +29,7 @@ const RecentBlog = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((item) => (
-          <RecentBlogCard key={item._id} item={item} />
+          <RecentBlogCard key={item._id} item={item} data={data} />
         ))}
       </div>
     </>
