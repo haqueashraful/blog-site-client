@@ -145,6 +145,13 @@ const BlogDetails = () => {
               </motion.button>
             </motion.div>
           )}
+
+          {
+            isCurrentUserAuthor ? (
+              <div className="text-center my-3">
+                <h1 className="text-3xl font-bold text-red-400">You cannot comment on your own blog</h1>
+              </div>
+            ):(
           <motion.div className="comment-form flex w-full gap-2 my-5">
             <WrapItem>
               <Avatar name={user?.displayName} src={user?.photoURL} />
@@ -161,6 +168,8 @@ const BlogDetails = () => {
               </Button>
             </form>
           </motion.div>
+            )
+          }
         </motion.div>
         </motion.div>
         {/* Comments */}
