@@ -6,9 +6,9 @@ import { Context } from "../Context/MyContext";
 import Loading from "../Component/Loading";
 
 const Wishlist = () => {
-    const { wishlist } = useContext( Context );
+    const { wishlist, user } = useContext( Context );
   const getData = async () => {
-    const response = await axios.get("https://blog-site-server-lemon.vercel.app/wishlist", {
+    const response = await axios.get(`https://blog-site-server-lemon.vercel.app/wishlist/${user.email}`, {
       withCredentials: true,
     });
     return response.data;

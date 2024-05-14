@@ -6,39 +6,39 @@ import { Context } from "../Context/MyContext";
 
 const RecentBlogCard = ({ item, data }) => {
   const [selectedId, setSelectedId] = useState(null);
-  // const [wishlist, setWishlist] = useState([]);
-  // const [wishlistState, setWishlistState] = useState(false);
-  const { handleAddToWishlist } = useContext(Context);
+  const [wishlist, setWishlist] = useState([]);
+  const [wishlistState, setWishlistState] = useState(false);
+  const { handleAddToWishlist, user, handleRemoveWishlist } = useContext(Context);
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchWishlist = async () => {
-  //     try {
-  //       const response = await axios.get("https://blog-site-server-lemon.vercel.app/wishlist");
-  //       setWishlist(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching wishlist:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const response = await axios.get(`https://blog-site-server-lemon.vercel.app/wishlist/${user.email}`);
+        setWishlist(response.data);
+      } catch (error) {
+        console.error("Error fetching wishlist:", error);
+      }
+    };
 
-  //   fetchWishlist();
-  // }, [wishlistState]);
+    fetchWishlist();
+  }, [wishlistState]);
 
   const handleDetails = (id) => {
     navigate(`/blogdetails/${id}`);
   };
 
-  // const handleAddToWishlistButton = () => {
-  //   const isInWishlist = wishlist.find((item) => item._id === selectedId);
-  //   if (isInWishlist) {
-  //     handleRemoveWishlist(selectedId);
-  //     setWishlistState(true);
-  //   } else {
-  //     handleAddToWishlist({ ...item });
-  //     setWishlistState(true);
-  //   }
-  // };
+  const handleAddToWishlistButton = () => {
+    const isInWishlist = wishlist.find((item) => item._id === selectedId);
+    if (isInWishlist) {
+      handleRemoveWishlist(selectedId);
+      setWishlistState(true);
+    } else {
+      handleAddToWishlist({item });
+      setWishlistState(true);
+    }
+  };
 
   return (
     <>
@@ -119,10 +119,12 @@ const RecentBlogCard = ({ item, data }) => {
               </button>
               <motion.div>
                 <motion.button
-                  onClick={() => handleAddToWishlist(item)}
+                  onClick={handleAddToWishlistButton}
                   className="bg-blue-500 text-white py-1 px-4 rounded-md"
                 >
-                  Add to Wishlist
+                      {wishlist.find((item) => item._id === selectedId)
+                    ? "Remove from Wishlist"
+                    : "Add to Wishlist"}
                 </motion.button>
 
                 <motion.button
