@@ -1,9 +1,11 @@
-import React from 'react';
+import { useContext } from "react";
+import { Context } from "../Context/MyContext";
 
 const Loading = () => {
+    const {isChecked} = useContext(Context)
     return (
-        <div>
-            
+        <div className=" flex justify-center items-center">
+            <span className={`loader  ${isChecked ? "!text-white" : "!text-black"}`}></span>
         </div>
     );
 };

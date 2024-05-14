@@ -42,7 +42,7 @@ const Banner = () => {
               alt="Caffe Latte"
             />
             <h1 className="flex flex-col justify-center items-center text-xl font-bold  text-white absolute inset-0">
-              TechnoLogy
+              Food
             </h1>
           </div>
           <div className="h-[300px] relative">
@@ -54,11 +54,11 @@ const Banner = () => {
               alt="Caffe Latte"
             />
             <h1 className="flex flex-col justify-center items-center text-xl font-bold  text-white absolute inset-0">
-              TechnoLogy
+              Travel
             </h1>
           </div>
         </div>
-        <div className=" flex flex-col gap-3">
+        <div className=" flex flex-col gap-3 lg:px-3 px-0">
           <Heading size="md">
             Blog site (<span className="text-secondary text-sm">Ha blog</span>)
           </Heading>

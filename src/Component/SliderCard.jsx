@@ -12,7 +12,7 @@ const SliderCard = ({data}) => {
                 <div className="text-black my-5">
                     <p className="font-bold"> Blog Added By</p>
                 </div>
-                <div className="w-full flex gap-2 justify-center items-center">
+                <div className="w-full lg:flex gap-2 justify-center items-center hidden">
                     <img
                         src={userPhoto}
                         alt={title}

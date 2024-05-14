@@ -1,20 +1,22 @@
-import { useState } from 'react'
-import './App.css'
-import RecentBlog from './Component/RecentBlog'
-import Banner from './Component/Banner'
-import NewsLetter from './Component/NewsLetter'
-import Slider from './Component/Slider'
+import "./App.css";
+import RecentBlog from "./Component/RecentBlog";
+import Banner from "./Component/Banner";
+import NewsLetter from "./Component/NewsLetter";
+import Slider from "./Component/Slider";
+import Loading from "./Component/Loading";
+import ErrorPage from "./Component/ErrorPage";
 
 function App() {
-
   return (
     <>
+    <ErrorPage />
+      <Loading />
       <Banner />
-        <RecentBlog />
-        <NewsLetter />
-        <Slider />
+      <RecentBlog />
+      <NewsLetter />
+      <Slider />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

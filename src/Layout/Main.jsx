@@ -3,8 +3,10 @@ import NavBar from "../Partials/NavBar";
 
 const Main = () => {
     return (
-        <div>
-            <NavBar />
+        <div className="min-h-screen relative">
+         <div className="sticky top-0 z-auto">
+         <NavBar />
+         </div>
             <Outlet />
         </div>
     );
