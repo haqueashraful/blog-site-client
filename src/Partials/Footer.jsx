@@ -44,7 +44,7 @@ const Footer = () => {
                 </ul>
             </div>
 
-            <div className="py-3 border-t-2 border-white">
+            <div className="py-3 border-t border-b border-white flex justify-center items-center">
                 <p className="text-center text-white">Copyright © 2023. All rights reserved.</p>
             </div>
         </div>

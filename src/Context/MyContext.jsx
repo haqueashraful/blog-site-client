@@ -119,7 +119,7 @@ export const MyContext = ({ children }) => {
 const queryClient = useQueryClient();
 
 const {mutateAsync} = useMutation({
-  mutationFn: (blog) => axios.post("http://localhost:5000/wishlist", blog, { withCredentials: true }),
+  mutationFn: (blog) => axios.post("https://blog-site-server-lemon.vercel.app/wishlist", blog, { withCredentials: true }),
   onSuccess: () => {
     toast.success("Item added to wishlist");
   },
@@ -131,7 +131,7 @@ const {mutateAsync} = useMutation({
   
 
   const deleteWishlist = useMutation({
-    mutationFn: (id) => axios.delete(`http://localhost:5000/wishlist/${id}`, { withCredentials: true }),
+    mutationFn: (id) => axios.delete(`https://blog-site-server-lemon.vercel.app/wishlist/${id}`, { withCredentials: true }),
     onSuccess: () => {
       toast.success("Item removed from wishlist");
       queryClient.invalidateQueries(["wishlist"]);

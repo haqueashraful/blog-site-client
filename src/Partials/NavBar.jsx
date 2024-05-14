@@ -23,8 +23,8 @@ const NavBar = () => {
     logOutUser();
   };
   return (
-    <div className="flex justify-between items-center py-1 bg-white rounded-l-full rounded-r-full my-3 border px-5 shadow-md">
-      <Menu className="z-auto">
+    <div className="flex justify-between items-center !z-auto py-1 bg-white rounded-l-full rounded-r-full my-3 border px-5 shadow-md">
+      <Menu className="!z-auto">
         <MenuButton
           as={IconButton}
           aria-label="Options"
@@ -32,13 +32,13 @@ const NavBar = () => {
           variant="outline"
           className="!text-teal-600 !border !border-teal-600 !rounded-full"
         />
-        <MenuList className="space-y-2 z-auto">
+        <MenuList className="space-y-2 !z-auto">
           <NavLink
             type="button"
             className={({ isActive }) =>
               isActive
                 ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
-                : " flex justify-start items-center gap-1 px-3"
+                : " flex justify-start items-center z-auto gap-1 px-3"
             }
             to="/"
           >
@@ -50,8 +50,8 @@ const NavBar = () => {
             id="menu-list-:rb:-menuitem-:rd:"
             className={({ isActive }) =>
               isActive
-                ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
-                : " flex justify-start items-center gap-1 px-3"
+                ? "!bg-teal-500 !text-white   flex justify-start items-center gap-1 px-3 py-1"
+                : " flex justify-start z-auto items-center gap-1 px-3"
             }
             to="/addblog"
           >
@@ -63,7 +63,7 @@ const NavBar = () => {
             className={({ isActive }) =>
               isActive
                 ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
-                : " flex justify-start items-center gap-1 px-3"
+                : " flex justify-start z-auto items-center gap-1 px-3"
             }
             to="/allblogs"
           >
@@ -75,7 +75,7 @@ const NavBar = () => {
             className={({ isActive }) =>
               isActive
                 ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
-                : " flex justify-start items-center gap-1 px-3"
+                : " flex justify-start z-auto items-center gap-1 px-3"
             }
             to="/featuredblog"
           >
@@ -88,7 +88,7 @@ const NavBar = () => {
             className={({ isActive }) =>
               isActive
                 ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
-                : " flex justify-start items-center gap-1 px-3"
+                : " flex justify-start z-auto items-center gap-1 px-3"
             }
             to="/wishlist"
           >

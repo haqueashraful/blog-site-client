@@ -11,6 +11,7 @@ import EditBlog from "../Pages/EditBlog";
 import BlogDetails from "../Pages/BlogDetails";
 import PrivateRoute from "../Authentication/PrivateRoute";
 import ErrorPage from "../Component/ErrorPage";
+import Home from "../Pages/Home";
 
 const Routes = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <App/>
+                element: <Home />
             },
             {
                 path: "/login",
