@@ -5,7 +5,7 @@ import { Context } from "../Context/MyContext";
 import axios from "axios";
 
 const BlogItem = ({ blog }) => {
-  const { handleAddToWishlist, handleRemoveWishlist, user } = useContext(Context);
+  const { handleAddToWishlist, handleRemoveWishlist, user, isChecked } = useContext(Context);
   const [wishlist, setWishlist] = useState([]);
   const [wishlistState, setWishlistState] = useState(false);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const BlogItem = ({ blog }) => {
     };
 
     fetchWishlist();
-  }, [wishlistState]);
+  }, [wishlistState, user?.email]);
 
   const {
     _id,
@@ -45,7 +45,7 @@ const BlogItem = ({ blog }) => {
       handleRemoveWishlist(_id);
       setWishlistState(true);
     } else {
-      handleAddToWishlist({ blog });
+      handleAddToWishlist( blog );
       setWishlistState(true);
     }
   };
@@ -55,7 +55,7 @@ const BlogItem = ({ blog }) => {
 
   return (
     <motion.div
-      className="bg-white rounded-lg shadow-md p-4 mb-4"
+      className="bg-secondary/10 rounded-lg shadow-md p-4 mb-4"
       initial={{ scale: 0 }}
       animate={{ rotate: 360, scale: 1 }}
       transition={{
@@ -71,10 +71,10 @@ const BlogItem = ({ blog }) => {
       />
 
       <motion.div className="mb-4 flex justify-between">
-        <motion.h2 className="text-lg font-semibold text-black mb-2">{title}</motion.h2>
-        <motion.p className="text-xs text-gray-500 mb-2">{category}</motion.p>
+        <motion.h2 className="text-lg font-semibold  mb-2">{title}</motion.h2>
+        <motion.p className="text-xs mb-2">{category}</motion.p>
       </motion.div>
-      <motion.p className="text-sm text-gray-600 mb-2">
+      <motion.p className="text-sm  mb-2">
         {short_description}
       </motion.p>
       <motion.div className="w-full flex justify-between mt-5">

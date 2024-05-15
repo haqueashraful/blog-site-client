@@ -8,7 +8,6 @@ const RecentBlog = () => {
     queryKey: ["recentBlog"],
     queryFn: () => axios.get("https://blog-site-server-lemon.vercel.app/blogs?recent=true", { withCredentials: true }).then((res) => res.data),
   });
-  console.log(data)
   if (isLoading) {
     return <div><Loading /></div>;
   }

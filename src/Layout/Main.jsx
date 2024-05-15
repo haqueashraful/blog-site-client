@@ -8,8 +8,10 @@ const Main = () => {
         <div className="min-h-screen relative px-2 lg:px-20">
        <div className="sticky top-0 !z-50">
        <NavBar />
-       </div>
-          <Outlet />
+       </div >
+         <div className="lg:my-10 my-2">
+         <Outlet />
+         </div>
         </div>
             <Footer />
         </>

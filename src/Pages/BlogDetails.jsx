@@ -28,7 +28,7 @@ const BlogDetails = () => {
     formState: { errors },
   } = useForm();
 
-  const { data = {}, isLoading } = useQuery({
+  const { data = {}, isLoading, isPending } = useQuery({
     queryKey: ["blogDetails", id],
     queryFn: () =>
       axios
@@ -102,7 +102,7 @@ const BlogDetails = () => {
     deletedBLog.mutateAsync();
   };
 
-  if (loader) {
+  if (isPending) {
     return <div><Loading /></div>;
   }
 

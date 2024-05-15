@@ -76,8 +76,8 @@ const updateBlog = useMutation({
       <h1 className="text-3xl font-bold text-center my-5">Edit Blog</h1>
     </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-5 justify-center items-center">
-        <div className="w-full border">
-          <img src={editImage} alt="" />
+        <div className="w-full h-full border">
+          <img className="w-full h-full object-cover" src={editImage} alt="" />
         </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl border p-2 rounded-md mx-auto w-full">

@@ -3,53 +3,60 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../Context/MyContext";
+import { useQuery } from "@tanstack/react-query";
 
-const RecentBlogCard = ({ item, data }) => {
+const RecentBlogCard = ({ item }) => {
   const [selectedId, setSelectedId] = useState(null);
   const [wishlist, setWishlist] = useState([]);
-  const [wishlistState, setWishlistState] = useState(false);
   const { handleAddToWishlist, user, handleRemoveWishlist } = useContext(Context);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchWishlist = async () => {
-      try {
-        const response = await axios.get(`https://blog-site-server-lemon.vercel.app/wishlist/${user.email}`);
-        setWishlist(response.data);
-      } catch (error) {
-        console.error("Error fetching wishlist:", error);
-      }
-    };
+  const getWishlist = async () => {
+    const response = await axios.get(
+      `https://blog-site-server-lemon.vercel.app/wishlist/${user.email}`,
+      { withCredentials: true }
+    );
+    return response.data;
+  };
 
-    fetchWishlist();
-  }, [wishlistState]);
+  const { data: wishlistData } = useQuery({
+    queryKey: ["wishlist", user?.email],
+    queryFn: getWishlist,
+  });
+
+  useEffect(() => {
+    if (wishlistData) {
+      setWishlist(wishlistData);
+    }
+  }, [wishlistData]);
 
   const handleDetails = (id) => {
     navigate(`/blogdetails/${id}`);
   };
 
   const handleAddToWishlistButton = () => {
-    const isInWishlist = wishlist.find((item) => item._id === selectedId);
+    const isInWishlist = wishlist.find((wishlistItem) => wishlistItem._id === selectedId);
     if (isInWishlist) {
       handleRemoveWishlist(selectedId);
-      setWishlistState(true);
+      setWishlist(wishlist.filter((wishlistItem) => wishlistItem._id !== selectedId));
     } else {
-      handleAddToWishlist({item });
-      setWishlistState(true);
+      handleAddToWishlist(item);
+      setWishlist([...wishlist, item]);
     }
   };
+
 
   return (
     <>
       <motion.div
-        className="flex flex-col gap-3 p-2 border"
+        className="flex flex-col gap-3 p-2 border bg-secondary/10 rounded-md"
         key={item._id}
         layoutId={item._id}
         onClick={() => setSelectedId(item._id)}
       >
         <motion.img src={item.image_url} alt={item.title} />
-        <motion.h1 className="text-lg text-white text-center w-1/3 bg-secondary px-3 py-1 rounded-l-full rounded-r-full">
+        <motion.h1 className="text-lg  text-center w-1/3 bg-secondary px-3 py-1 rounded-l-full rounded-r-full">
           {item.category}
         </motion.h1>
         <motion.h2 className="text-lg font-bold">{item.title}</motion.h2>
@@ -93,22 +100,19 @@ const RecentBlogCard = ({ item, data }) => {
             >
               <img
                 className="mb-4 w-full h-[150px]"
-                src={data.find((item) => item._id === selectedId)?.image_url}
-                alt={data.find((item) => item._id === selectedId)?.title}
+                src={item.image_url}
+                alt={item.title}
                 style={{ width: "100%", height: "150px" }}
               />
               <h2 className="text-xl font-semibold mb-2">
-                {data.find((item) => item._id === selectedId)?.title}
+                {item.title}
               </h2>
               <h2 className="text-lg font-bold mb-2 text-secondary">
                 <span className="text-black font-normal">Category:</span>
-                {data.find((item) => item._id === selectedId)?.category}
+                {item.category}
               </h2>
               <h5>
-                {
-                  data.find((item) => item._id === selectedId)
-                    ?.short_description
-                }
+                {item.short_description}
               </h5>
 
               <button
@@ -122,7 +126,7 @@ const RecentBlogCard = ({ item, data }) => {
                   onClick={handleAddToWishlistButton}
                   className="bg-blue-500 text-white py-1 px-4 rounded-md"
                 >
-                      {wishlist.find((item) => item._id === selectedId)
+                  {wishlist.find((wishlistItem) => wishlistItem._id === selectedId)
                     ? "Remove from Wishlist"
                     : "Add to Wishlist"}
                 </motion.button>

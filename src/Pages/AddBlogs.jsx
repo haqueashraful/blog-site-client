@@ -49,8 +49,8 @@ const AddBlogs = () => {
       <h1 className="text-3xl font-bold text-center my-5">Add New Blog</h1>
     </div>
     <div className="my-5  grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-center">
-      <div className="w-full border">
-      <img src={addImg} alt="" />
+      <div className="w-full h-full border">
+      <img className="w-full h-full object-cover" src={addImg} alt="" />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl border p-2 rounded-md  mx-auto w-full">
         {/* title */}
