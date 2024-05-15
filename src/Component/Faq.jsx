@@ -17,8 +17,9 @@ const Faq = () => {
   return (
     <div className={`grid grid-cols-1 lg:grid-cols-2 bg-white/40 border  rounded-md overflow-hidden ${isChecked ? "!text-white border-white" : "!text-black border-black"}`}>
       <div className="w-full h-full bg-white/40">
-        <div className=" py-5 w-full h-full flex justify-center items-center text-3xl font-bold">
-            Frequently asked questions
+        <div className=" py-5 w-full h-full flex flex-col justify-center items-center">
+            <h1 className=" text-7xl font-bold">?</h1>
+            <h1 className=" text-3xl font-bold">Frequently asked questions</h1>
         </div>
       </div>
       <div>
