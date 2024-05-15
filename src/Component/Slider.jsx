@@ -20,13 +20,16 @@ const Slider = () => {
         .then((res) => res.data),
   });
 
+
+ 
+
   useEffect(() => {
     if (splideRef.current && data) {
       const splide = new Splide(splideRef.current, {
         type: "loop",
         drag: "free",
         focus: "center",
-        perPage: 3,
+        perPage: 2,
         autoScroll: {
           speed: 0.5,
         },
@@ -47,7 +50,7 @@ const Slider = () => {
   return (
     <div className="splide my-10 rounded-md" ref={splideRef}>
       <div className="splide__track">
-        <ul className="splide__list gap-8">
+        <ul className="splide__list gap-2 lg:gap-8">
           {data &&
             data.map((item) => (
               <li className="splide__slide" key={item._id}>
