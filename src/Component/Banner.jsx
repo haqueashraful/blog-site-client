@@ -64,7 +64,7 @@ import {
           </div>
           <div className="flex flex-col gap-3 lg:px-3 px-0">
             <Heading size="md">
-              Blog site (<span className="text-white text-sm">Ha blog</span>)
+              Blog site (<span className="text-teal-400 text-sm">Ha blog</span>)
             </Heading>
             <Text py="2">
               This is a perfect blog site for you, I think you will love it. You can
@@ -74,7 +74,8 @@ import {
             <Button
               onClick={() => navigate("/allblogs")}
               variant="solid"
-              colorScheme="blue"
+              // colorScheme="#14B8A6"
+              className="!bg-[#14B8A6] !text-white"
             >
               Explore more..
             </Button>

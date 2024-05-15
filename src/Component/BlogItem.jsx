@@ -67,7 +67,7 @@ const BlogItem = ({ blog }) => {
       <motion.img
         src={image_url}
         alt={title}
-        className="w-full h-40 object-cover mb-4"
+        className="w-full min-h-[200px] max-h-[200px] object-cover mb-4"
       />
 
       <motion.div className="mb-4 flex justify-between">

@@ -32,7 +32,7 @@ const NavBar = () => {
           icon={<RxHamburgerMenu />}
           variant="outline"
           className={`!border !rounded-full ${
-            isChecked ? "!text-white border-white" : "!text-black !border-black"
+            isChecked ? "!text-black border-black" : "!text-black !border-black"
           }`}
         />
         <MenuList className="space-y-2 !z-auto">
@@ -104,7 +104,7 @@ const NavBar = () => {
       <div className="">
         <a
           href="/"
-          className={`btn btn-ghost text-xl ${isChecked ? "text-white" : ""}`}
+          className={`btn btn-ghost text-xl text-black`}
         >
           HA Blog
         </a>

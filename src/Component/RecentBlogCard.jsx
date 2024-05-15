@@ -55,8 +55,8 @@ const RecentBlogCard = ({ item }) => {
         layoutId={item._id}
         onClick={() => setSelectedId(item._id)}
       >
-        <motion.img src={item.image_url} alt={item.title} />
-        <motion.h1 className="text-lg  text-center text-white w-1/3 bg-secondary px-3 py-1 rounded-l-full rounded-r-full">
+        <motion.img className="max-h-[200px] min-h-[200px]" src={item.image_url} alt={item.title} />
+        <motion.h1 className="text-lg  text-center text-white bg-secondary px-3 py-1 rounded-l-full rounded-r-full">
           {item.category}
         </motion.h1>
         <motion.h2 className="text-lg font-bold">{item.title}</motion.h2>

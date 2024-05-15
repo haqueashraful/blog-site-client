@@ -78,7 +78,7 @@ const Login = () => {
           isChecked ? "bg-white/40 text-white " : "bg-white/40 text-black"
         }`}
       >
-        <h1 className="text-2xl font-bold  text-center">Login</h1>
+        <h1 className={`text-2xl font-bold  text-center ${isChecked ? "text-white" : "text-black"}`}>Login</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full mx-auto space-y-4">
           {/* image */}
           <div className="w-full flex-col flex justify-center items-center">

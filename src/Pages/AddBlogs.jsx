@@ -54,7 +54,7 @@ const AddBlogs = () => {
     <div>
       <h1   style={{backgroundImage: `url(${checkedBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}} className={`text-3xl ${isChecked ? 'text-white' : 'text-black'} font-bold text-center my-5 border py-5 rounded-md`}>Add New Blog</h1>
     </div>
-    <div className="my-5  grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-center">
+    <div className="my-5  grid grid-cols-1 md:grid-cols-2 bg-white/40 p-2 rounded-md gap-3 justify-center items-center">
       <div className="w-full h-full border">
       <img className="w-full h-full object-cover" src={addImg} alt="" />
       </div>
@@ -69,7 +69,7 @@ const AddBlogs = () => {
             id="title"
             placeholder="Title of the blog"
             {...register("title", { required: "Title is required" })}
-            className="form-input mt-1 block w-full !bg-white/60"
+            className={`form-input mt-1 block w-full  ${isChecked ? "!text-white" : "!text-black"}`}
           />
           {errors.title && (
             <span className="text-red-500">{errors.title.message}</span>
@@ -86,7 +86,7 @@ const AddBlogs = () => {
             id="image_url"
             placeholder="Image URL"
             {...register("image_url", { required: "Image URL is required" })}
-            className="form-input mt-1 block w-full !bg-white/60"
+            className={`form-input mt-1 block w-full  ${isChecked ? "!text-white" : "!text-black"}`}
           />
           {errors.image_url && (
             <span className="text-red-500">{errors.image_url.message}</span>
@@ -125,7 +125,7 @@ const AddBlogs = () => {
             {...register("short_description", {
               required: "Short description is required",
             })}
-            className="form-input mt-1 block w-full !bg-white/60"
+            className={`form-input mt-1 block w-full  ${isChecked ? "!text-white" : "!text-black"}`}
           />
           {errors.short_description && (
             <span className="text-red-500">
@@ -145,7 +145,7 @@ const AddBlogs = () => {
             {...register("long_description", {
               required: "Long Description is required",
             })}
-            className="form-input mt-1 block w-full !bg-white/60"
+            className={`form-input mt-1 block w-full  ${isChecked ? "!text-white" : "!text-black"}`}
           />
           {errors.long_description && (
             <span className="text-red-500">

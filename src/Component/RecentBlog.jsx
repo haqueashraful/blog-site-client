@@ -2,10 +2,12 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import RecentBlogCard from "./RecentBlogCard";
 import Loading from "./Loading";
+import { useContext } from "react";
+import { Context } from "../Context/MyContext";
 
 const RecentBlog = () => {
 
-
+  const { isChecked } = useContext(Context);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["recentBlog"],
     queryFn: async () => await axios.get("https://blog-site-server-lemon.vercel.app/blogs/recent", { withCredentials: true }).then((res) => res.data),
@@ -27,8 +29,8 @@ const RecentBlog = () => {
   return (
     <>
       <div className="my-10">
-        <h1 className="text-3xl font-bold text-center text-white">Recent Blog</h1>
-        <p className="text-center text-xl text-red-500 font-bold">Click on the Card to show Details</p>
+        <h1 className={`text-3xl font-bold text-center ${isChecked ? "text-white" : "text-black"}`}>Recent Blog</h1>
+        <p className="text-center text-xl text-teal-500 font-bold">Click on the Card to show Details</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((item) => (

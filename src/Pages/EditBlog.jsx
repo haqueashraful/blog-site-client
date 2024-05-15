@@ -81,7 +81,7 @@ const updateBlog = useMutation({
     <div className="text-center">
       <h1    style={{backgroundImage: `url(${checkedBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}} className={`text-3xl ${isChecked ? 'text-white' : 'text-black'} font-bold text-center my-5 border py-5 rounded-md`}>Edit Blog</h1>
     </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-5 justify-center items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 p-2 rounded-md bg-white/40 gap-3 my-5 justify-center items-center">
         <div className="w-full h-full border">
           <img className="w-full h-full object-cover" src={editImage} alt="" />
         </div>

@@ -47,7 +47,7 @@ const Register = () => {
       {/* <Helmet>
         <title>Register Page</title>
       </Helmet> */}
-      <h2 className="mb-3 text-3xl font-semibold text-center">
+      <h2 className={`text-2xl font-bold mb-5  text-center ${isChecked ? "text-white" : "text-black"}`}>
         Create your account
       </h2>
       <div
