@@ -1,11 +1,13 @@
 import { FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
+import bg from "../assets/technology.jpg"
 
 const Footer = () => {
     return (
-        <div className="bg-[#023A55] py-9 space-y-5">
-            <div>
+        <div style={{backgroundImage: `url(${bg})`, backgroundAttachment: 'fixed', backgroundPosition: 'top', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}} className=" space-y-5">
+         <div className="w-full bg-[#023A55]/60 py-9">
+         <div className="py-4">
                 <h1 className="text-center text-4xl font-bold text-white">HA Blog</h1>
             </div>
             <div>
@@ -25,7 +27,7 @@ const Footer = () => {
                 </ul>
             </div>
             <div>
-                <ul className="flex justify-center gap-5 text-xl underline text-white">
+                <ul className="flex flex-col md:flex-row justify-center items-center py-2 gap-2 lg:gap-5 text-xl underline text-white">
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -47,6 +49,7 @@ const Footer = () => {
             <div className="py-3 border-t border-b border-white flex justify-center items-center">
                 <p className="text-center text-white">Copyright © 2023. All rights reserved.</p>
             </div>
+         </div>
         </div>
     );
 };

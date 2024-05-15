@@ -24,14 +24,14 @@ const NavBar = () => {
     logOutUser();
   };
   return (
-    <div className="flex justify-between items-center !z-auto py-1 bg-white rounded-l-full rounded-r-full my-3 border px-5 shadow-md">
+    <div className="flex justify-between items-center !z-auto py-1 bg-white/60 rounded-l-full rounded-r-full  border px-5 shadow-md">
       <Menu className="!z-auto">
         <MenuButton
           as={IconButton}
           aria-label="Options"
           icon={<RxHamburgerMenu />}
           variant="outline"
-          className="!text-teal-600 !border !border-teal-600 !rounded-full"
+          className={`!border !rounded-full ${isChecked ? "!text-white border-white" : "!text-black !border-black"}`}
         />
         <MenuList className="space-y-2 !z-auto">
           <NavLink
@@ -100,7 +100,7 @@ const NavBar = () => {
       </Menu>
 
       <div className="">
-      <a href="/" className={`btn btn-ghost text-xl ${isChecked ? "text-secondary" : ""}`}>HA Blog</a>
+      <a href="/" className={`btn btn-ghost text-xl ${isChecked ? "text-white" : ""}`}>HA Blog</a>
       </div>
       <div className="flex gap-2">
       <div className=" hidden lg:flex">
@@ -122,7 +122,7 @@ const NavBar = () => {
             />
             <button
               onClick={handleLogOut}
-              className="btn btn-outline !outline-teal-500 hover:bg-secondary !py-2  hover:text-white ml-2"
+              className="btn btn-outline !py-2 text-black    hover:text-white ml-2"
             >
               Logout
             </button>

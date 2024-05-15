@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import Select from "react-select";
 import { Context } from "../Context/MyContext";
 import addImg from '../assets/add.svg'
+import bgImage1 from   "../assets/bg2.jpg"
+import bgImage2 from   "../assets/bg5.jpg"
 
 const AddBlogs = () => {
-  const { user } = useContext(Context);
+  const { user, isChecked } = useContext(Context);
 
   const {
     register,
@@ -37,6 +39,7 @@ const AddBlogs = () => {
     });
   };
   
+  const checkedBg = isChecked ? bgImage1 : bgImage2
 
   const handleCategoryChange = (selectedOption) => {
     setSelectedCategory(selectedOption);
@@ -46,7 +49,7 @@ const AddBlogs = () => {
   return (
     <>
     <div>
-      <h1 className="text-3xl font-bold text-center my-5">Add New Blog</h1>
+      <h1   style={{backgroundImage: `url(${checkedBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}} className={`text-3xl ${isChecked ? 'text-white' : 'text-black'} font-bold text-center my-5 border py-5 rounded-md`}>Add New Blog</h1>
     </div>
     <div className="my-5  grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-center">
       <div className="w-full h-full border">

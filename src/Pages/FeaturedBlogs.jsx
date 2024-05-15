@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@chakra-ui/react";
+import { Button, useColorMode } from "@chakra-ui/react";
 import Loading from "../Component/Loading";
 import { useQuery } from "@tanstack/react-query";
+import bgImage1 from   "../assets/bg2.jpg"
+import bgImage2 from   "../assets/bg5.jpg"
+import { Context } from "../Context/MyContext";
 
 const FeaturedBlogs = () => {
   const navigate = useNavigate();
+  const {isChecked} = useContext(Context)
 
   const { data: featuredBlogs = [], isLoading } = useQuery({
     queryKey: ["featuredBlogs"],
@@ -17,7 +21,6 @@ const FeaturedBlogs = () => {
         .then((res) => res.data),
   });
 
-  console.log(featuredBlogs);
 
   const columns = [
     {
@@ -58,6 +61,8 @@ const FeaturedBlogs = () => {
     },
   ];
 
+  const checkedBg = isChecked ? bgImage1 : bgImage2
+
   const customStyle = {
     headRow: {
       style: {
@@ -86,7 +91,7 @@ const FeaturedBlogs = () => {
   }
   return (
     <div className=" my-10">
-      <h2 className="text-3xl font-bold text-center my-5 border py-10  ">
+      <h2  style={{backgroundImage: `url(${checkedBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}} className={`text-3xl ${isChecked ? 'text-white' : 'text-black'} font-bold text-center my-5 border py-5 rounded-md`}>
         Featured Blogs
       </h2>
       <DataTable

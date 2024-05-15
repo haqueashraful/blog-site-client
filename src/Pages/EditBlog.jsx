@@ -1,15 +1,19 @@
 import { Input,  Select,  Textarea } from "@chakra-ui/react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import editImage from "../assets/edit.svg";
 import Loading from "../Component/Loading";
+import bgImage1 from   "../assets/bg2.jpg"
+import bgImage2 from   "../assets/bg5.jpg"
+import { Context } from "../Context/MyContext";
 
 const EditBlog = () => {
   const { id } = useParams();
+  const {isChecked} = useContext(Context)
   const {
     register,
     handleSubmit,
@@ -69,11 +73,14 @@ const updateBlog = useMutation({
     return <Loading />
   }
 
+  const checkedBg = isChecked ? bgImage1 : bgImage2
+
+
   return (
     <>
 
     <div className="text-center">
-      <h1 className="text-3xl font-bold text-center my-5">Edit Blog</h1>
+      <h1    style={{backgroundImage: `url(${checkedBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}} className={`text-3xl ${isChecked ? 'text-white' : 'text-black'} font-bold text-center my-5 border py-5 rounded-md`}>Edit Blog</h1>
     </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-5 justify-center items-center">
         <div className="w-full h-full border">

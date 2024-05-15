@@ -22,14 +22,14 @@ import {
           damping: 20,
           duration: 1,
         }}
-        className="my-10 px-2 lg:px-0"
+        className="my-10 px-2 lg:px-0 bg-secondary/10 rounded-md"
       >
-        <div className="flex flex-col lg:flex-row gap-3 justify-center items-center">
+        <div className="flex flex-col lg:flex-row gap-3 justify-center rounded-md items-center overflow-hidden">
           <div className="flex w-full">
-            <div className="h-[300px] relative">
+            <div className="h-[300px] w-1/2 relative">
               <Image
                 objectFit="cover"
-                height={"full"}
+                height={"100%"}
                 src={techno}
                 className="w-full"
               />
@@ -37,10 +37,10 @@ import {
                 Technology
               </h1>
             </div>
-            <div className="h-[300px] relative">
+            <div className="h-[300px] w-1/2 relative">
               <Image
                 objectFit="cover"
-                height={"full"}
+                height={"100%"}
                 src={food}
                 alt="Food"
                 className="w-full"
@@ -49,10 +49,10 @@ import {
                 Food
               </h1>
             </div>
-            <div className="h-[300px] relative">
+            <div className="h-[300px] w-1/2 relative">
               <Image
                 objectFit="cover"
-                height={"full"}
+                height={"100%"}
                 src={travel}
                 alt="Travel"
                 className="w-full"
@@ -64,7 +64,7 @@ import {
           </div>
           <div className="flex flex-col gap-3 lg:px-3 px-0">
             <Heading size="md">
-              Blog site (<span className="text-secondary text-sm">Ha blog</span>)
+              Blog site (<span className="text-white text-sm">Ha blog</span>)
             </Heading>
             <Text py="2">
               This is a perfect blog site for you, I think you will love it. You can
