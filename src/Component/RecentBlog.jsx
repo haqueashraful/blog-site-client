@@ -4,10 +4,14 @@ import RecentBlogCard from "./RecentBlogCard";
 import Loading from "./Loading";
 
 const RecentBlog = () => {
+
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["recentBlog"],
-    queryFn: () => axios.get("https://blog-site-server-lemon.vercel.app/blogs?recent=true", { withCredentials: true }).then((res) => res.data),
+    queryFn: async () => await axios.get("https://blog-site-server-lemon.vercel.app/blogs/recent", { withCredentials: true }).then((res) => res.data),
   });
+
+  console.log(data)
   if (isLoading) {
     return <div><Loading /></div>;
   }

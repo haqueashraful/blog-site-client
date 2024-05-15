@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../Partials/NavBar";
 import Footer from "../Partials/Footer";
-import img1 from "../assets/SKY.jpg";
-import img2 from "../assets/nightbg.jpg";
+import img1 from "../assets/sun.jpg";
+import img2 from "../assets/moon.jpg";
 import { useContext } from "react";
 import { Context } from "../Context/MyContext";
 
