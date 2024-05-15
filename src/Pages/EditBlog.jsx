@@ -66,7 +66,6 @@ const updateBlog = useMutation({
   const onSubmit = async (data) => {
    await updateBlog.mutate(data)
 
-    console.log(data)
   };
 
   if(isLoading){

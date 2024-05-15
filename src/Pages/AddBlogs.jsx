@@ -33,12 +33,9 @@ const AddBlogs = () => {
   
     const currentDate = new Date();
     const localDateTime = currentDate.toString(); // Format: "MM/DD/YYYY, HH:MM:SS AM/PM" (example)
-    console.log(localDateTime)
     data.createdTime = localDateTime;
   
-    console.log(data);
     axios.post("https://blog-site-server-lemon.vercel.app/blogs", data).then((res) => {
-      console.log(res.data);
       reset();
       navigate("/");
       toast.success("Blog Added Successfully");

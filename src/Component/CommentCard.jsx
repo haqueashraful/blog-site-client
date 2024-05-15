@@ -44,7 +44,6 @@ const CommentCard = ({ comment, setUpdateComment }) => {
   };
 
   const handleSendClick = async () => {
-    console.log(editedComment);
     await updatedComment.mutate({ commentText: editedComment });
     setIsEditing(false);
   };

@@ -91,7 +91,6 @@ export const MyContext = ({ children }) => {
             withCredentials: true,
           })
           .then((response) => {
-            console.log(response.data);
             setLoader(false);
           });
       } else {
@@ -125,10 +124,6 @@ export const MyContext = ({ children }) => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const newTheme = isChecked ? "dark" : "light";
-  //   document.documentElement.setAttribute("data-theme", newTheme);
-  // }, [isChecked]);
 
   const queryClient = useQueryClient();
 
@@ -172,7 +167,6 @@ export const MyContext = ({ children }) => {
   });
   const handleRemoveWishlist = (id) => {
     deleteWishlist.mutate(id);
-    console.log(id);
   };
 
   const info = {

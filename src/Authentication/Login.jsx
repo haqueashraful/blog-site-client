@@ -26,7 +26,6 @@ const Login = () => {
   const googleSignIn = () => {
     signInWithGoogle()
       .then((user) => {
-        console.log(user);
         setLoader(true);
         toast.success("Login with Google Successful");
         setLoader(false);
@@ -48,7 +47,6 @@ const Login = () => {
         setLoader(false);
       })
       .catch((error) => {
-        console.log(error);
         toast.error(error.message);
       });
   };
@@ -68,7 +66,7 @@ const Login = () => {
         toast.error(error.message);
       });
     } else {
-      console.log(data);
+      toast.error("Failed to login");
     }
   };
 
