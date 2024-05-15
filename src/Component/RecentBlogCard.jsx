@@ -50,7 +50,7 @@ const RecentBlogCard = ({ item }) => {
   return (
     <>
       <motion.div
-        className="flex flex-col gap-3 p-4 border bg-secondary/10 rounded-md"
+        className="flex flex-col gap-3 p-4 border bg-white/40 rounded-md"
         key={item._id}
         layoutId={item._id}
         onClick={() => setSelectedId(item._id)}
@@ -75,7 +75,7 @@ const RecentBlogCard = ({ item }) => {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: "rgba(100%, 100%, 100%, 0.9)",
+              backgroundColor: "rgba(100%, 100%, 100%, 0.7)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",

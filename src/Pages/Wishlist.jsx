@@ -33,7 +33,7 @@ const Wishlist = () => {
 
   return (
     <>
-    <div className="my-10">
+    <div className="my-5">
         <h1   style={{backgroundImage: `url(${checkedBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}} className={`text-3xl ${isChecked ? 'text-white' : 'text-black'} font-bold text-center my-5 border py-5 rounded-md`}>Wishlist</h1>
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

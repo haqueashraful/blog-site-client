@@ -13,7 +13,7 @@ const WishListCard = ({ item }) => {
     const truncatedDescription = long_description?.length > 100 ? `${long_description.slice(0, 100)}...` : long_description;
 
     return (
-        <Card maxW="sm">
+        <Card maxW="sm" className='!bg-white/40'>
             <CardBody>
                 <Image
                     src={image_url}

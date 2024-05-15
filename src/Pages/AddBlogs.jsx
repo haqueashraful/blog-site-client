@@ -7,9 +7,13 @@ import { Context } from "../Context/MyContext";
 import addImg from '../assets/add.svg'
 import bgImage1 from   "../assets/bg2.jpg"
 import bgImage2 from   "../assets/bg5.jpg"
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddBlogs = () => {
   const { user, isChecked } = useContext(Context);
+  const navigate = useNavigate();
+
 
   const {
     register,
@@ -36,6 +40,8 @@ const AddBlogs = () => {
     axios.post("https://blog-site-server-lemon.vercel.app/blogs", data).then((res) => {
       console.log(res.data);
       reset();
+      navigate("/");
+      toast.success("Blog Added Successfully");
     });
   };
   
@@ -66,7 +72,7 @@ const AddBlogs = () => {
             id="title"
             placeholder="Title of the blog"
             {...register("title", { required: "Title is required" })}
-            className="form-input mt-1 block w-full"
+            className="form-input mt-1 block w-full !bg-white/60"
           />
           {errors.title && (
             <span className="text-red-500">{errors.title.message}</span>
@@ -83,7 +89,7 @@ const AddBlogs = () => {
             id="image_url"
             placeholder="Image URL"
             {...register("image_url", { required: "Image URL is required" })}
-            className="form-input mt-1 block w-full"
+            className="form-input mt-1 block w-full !bg-white/60"
           />
           {errors.image_url && (
             <span className="text-red-500">{errors.image_url.message}</span>
@@ -122,7 +128,7 @@ const AddBlogs = () => {
             {...register("short_description", {
               required: "Short description is required",
             })}
-            className="form-input mt-1 block w-full"
+            className="form-input mt-1 block w-full !bg-white/60"
           />
           {errors.short_description && (
             <span className="text-red-500">
@@ -142,7 +148,7 @@ const AddBlogs = () => {
             {...register("long_description", {
               required: "Long Description is required",
             })}
-            className="form-input mt-1 block w-full"
+            className="form-input mt-1 block w-full !bg-white/60"
           />
           {errors.long_description && (
             <span className="text-red-500">

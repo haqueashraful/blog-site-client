@@ -108,11 +108,11 @@ const BlogDetails = () => {
 
   return (
     <PhotoProvider>
-      <motion.div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3 !z-auto">
+      <motion.div className="w-full grid grid-cols-1  md:grid-cols-2 gap-3 !z-auto">
         {/* Blog Details */}
         <motion.div className="w-full lg:relative">
         <motion.div className=" w-full   lg:sticky top-0 ">
-          <motion.div className="w-full p-2 border rounded-md overflow-hidden">
+          <motion.div className="w-full bg-white/40 p-2 border rounded-md overflow-hidden">
             <PhotoView src={image_url}>
               <motion.img
                 className="w-full h-52 rounded-sm"
@@ -158,7 +158,7 @@ const BlogDetails = () => {
             </WrapItem>
             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
               <Textarea
-                className="mb-2 w-full"
+                className="mb-2 w-full !bg-white/60"
                 {...register("comment", { required: "Comment is required" })}
                 placeholder="Enter your comment"
               />

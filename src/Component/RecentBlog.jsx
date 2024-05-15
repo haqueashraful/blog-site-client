@@ -23,8 +23,8 @@ const RecentBlog = () => {
   return (
     <>
       <div className="my-10">
-        <h1 className="text-3xl font-bold text-center text-secondary">Recent Blog</h1>
-        <p className="text-center text-xl text-red-500">Click on the Card to show Details</p>
+        <h1 className="text-3xl font-bold text-center text-white">Recent Blog</h1>
+        <p className="text-center text-xl text-red-500 font-bold">Click on the Card to show Details</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((item) => (

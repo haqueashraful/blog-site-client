@@ -74,15 +74,13 @@ const Login = () => {
 
   return (
     <>
-      {/* <Helmet>
-        <title>Login Page</title>
-      </Helmet> */}
+
       <div
         className={`w-full  p-8 space-y-3 rounded-xl ${
-          isChecked ? "bg-base-200 " : "bg-base-100 text-white"
+          isChecked ? "bg-white/40 text-white " : "bg-white/40 text-black"
         }`}
       >
-        <h1 className="text-2xl font-bold text-black text-center">Login</h1>
+        <h1 className="text-2xl font-bold  text-center">Login</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full mx-auto space-y-4">
           {/* image */}
           <div className="w-full flex-col flex justify-center items-center">
@@ -92,7 +90,7 @@ const Login = () => {
           <div className="w-full flex flex-col justify-center items-center">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
               <div className="space-y-1 text-sm">
-                <label htmlFor="email" className="block text-base-content">
+                <label htmlFor="email" className="block font-bold">
                   Username
                 </label>
                 <Input
@@ -102,7 +100,7 @@ const Login = () => {
                   })}
                   type="email"
                   placeholder="leroy@jenkins.com"
-                  className="w-full px-3 py-2 border rounded-md border-gray-300  text-base-content focus:border-violet-600"
+                  className="w-full px-3 py-2 border !bg-white/60 rounded-md border-gray-300  font-bold focus:border-violet-600"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -111,7 +109,7 @@ const Login = () => {
               <div className="space-y-1 text-sm">
                 <label
                   htmlFor="password"
-                  className=" text-base-content flex justify-between items-center"
+                  className=" font-bold flex justify-between items-center"
                 >
                   <span>Password</span>
                   <span
@@ -136,28 +134,27 @@ const Login = () => {
                   })}
                   type={showPassword ? "text" : "password"}
                   placeholder="*****"
-                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
+                  className="w-full px-3 py-2 border rounded-md !bg-white/60 border-gray-300 font-bold focus:border-violet-600"
                 />
                 {errors.password && (
                   <p className="text-red-500 text-sm">
                     {errors.password.message}
                   </p>
                 )}
-                <div className="flex justify-end text-xs text-base-content">
+                <div className="flex justify-end text-xs font-bold">
                   <Link to="#">Forgot Password?</Link>
                 </div>
               </div>
               <Button
                 variant="outline"
-                className="w-full p-3 text-center rounded-sm"
+                className="w-full px-8 py-3 font-semibold !border-none rounded-md !bg-violet-600 !text-gray-50"
                 type="submit"
-                // className="block w-full p-3 text-center rounded-sm text-gray-50 bg-violet-600"
               >
                 Sign in
               </Button>
             </form>
 
-            <p className="text-xs text-center sm:px-6 text-base-content">
+            <p className="text-xs text-center sm:px-6 font-bold">
               Don’t have an account?{" "}
               <Link to="/register" className="underline text-lg text-blue-800">
                 Sign up
@@ -165,7 +162,7 @@ const Login = () => {
             </p>
             <div className="flex items-center pt-4 space-x-1">
               <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
-              <p className="px-3 text-sm text-base-content">
+              <p className="px-3 text-sm font-bold">
                 Login with social accounts
               </p>
               <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>

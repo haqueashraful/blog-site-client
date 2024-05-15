@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import bgImage1 from   "../assets/bg2.jpg"
 import bgImage2 from   "../assets/bg5.jpg"
 import { Context } from "../Context/MyContext";
+import { Padding } from "@mui/icons-material";
 
 const FeaturedBlogs = () => {
   const navigate = useNavigate();
@@ -79,7 +80,7 @@ const FeaturedBlogs = () => {
       style: {
         fontSize: "18px",
       },
-    },
+    }
   };
 
   if (isLoading) {
@@ -95,6 +96,7 @@ const FeaturedBlogs = () => {
         Featured Blogs
       </h2>
       <DataTable
+      className="!bg-white/40"
         data={featuredBlogs}
         columns={columns}
         customStyles={customStyle}

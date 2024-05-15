@@ -51,10 +51,10 @@ const Register = () => {
         Create your account
       </h2>
       <div
-        className={`w-full mx-auto p-4 rounded-md shadow sm:p-8  ${
+        className={`w-full mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-5 p-4 rounded-md shadow sm:p-8  ${
           isChecked
-            ? "bg-base-200 "
-            : "bg-base-100 text-white grid grid-cols-1 lg:grid-cols-2 gap-5"
+            ? "bg-white/40 text-white "
+            : "bg-white/40 text-black"
         }`}
       >
         <div>
@@ -77,7 +77,7 @@ const Register = () => {
                   {...register("name", { required: "Name is required" })}
                   type="text"
                   placeholder="John Doe"
-                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
+                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600 !bg-white/60"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -91,7 +91,7 @@ const Register = () => {
                   {...register("photo_url")}
                   type="text"
                   placeholder="Photo URL"
-                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
+                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600 !bg-white/60"
                 />
               </div>
               <div className="space-y-2">
@@ -105,7 +105,7 @@ const Register = () => {
                   })}
                   type="email"
                   placeholder="leroy@jenkins.com"
-                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
+                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600 !bg-white/60"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -142,7 +142,7 @@ const Register = () => {
                   })}
                   type={showPassword ? "text" : "password"}
                   placeholder="*****"
-                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600"
+                  className="w-full px-3 py-2 border rounded-md border-gray-300 text-base-content focus:border-violet-600 !bg-white/60"
                 />
                 {errors.password && (
                   <p className="text-red-500 text-sm">

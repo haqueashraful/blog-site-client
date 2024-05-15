@@ -55,7 +55,7 @@ const BlogItem = ({ blog }) => {
 
   return (
     <motion.div
-      className="bg-secondary/10 rounded-lg shadow-md p-4 mb-4"
+      className="!bg-white/40 rounded-lg shadow-md p-4 mb-4"
       initial={{ scale: 0 }}
       animate={{ rotate: 360, scale: 1 }}
       transition={{

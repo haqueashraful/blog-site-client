@@ -22,7 +22,7 @@ import {
           damping: 20,
           duration: 1,
         }}
-        className="my-10 px-2 lg:px-0 bg-secondary/10 rounded-md"
+        className="my-10 px-2 lg:px-0 bg-white/40 rounded-md"
       >
         <div className="flex flex-col lg:flex-row gap-3 justify-center rounded-md items-center overflow-hidden">
           <div className="flex w-full">
