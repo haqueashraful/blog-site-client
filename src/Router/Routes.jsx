@@ -37,11 +37,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/addblog",
-                element: <AddBlogs/>
+                element: <PrivateRoute><AddBlogs/></PrivateRoute>
             },
             {
                 path: "/wishlist",
-                element: <Wishlist/>
+                element: <PrivateRoute><Wishlist/></PrivateRoute>
             },
             {
                 path: "/featuredblog",
@@ -54,7 +54,6 @@ const Routes = createBrowserRouter([
             {
                 path: "/blogdetails/:id",
                 element: <PrivateRoute><BlogDetails/></PrivateRoute>,
-                // loader: ({params}) => fetch(`https://blog-site-server-lemon.vercel.app/blogs/${params.id}`, {credentials: "include"})
             }
         ]
     }

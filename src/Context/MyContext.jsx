@@ -143,7 +143,6 @@ export const MyContext = ({ children }) => {
       toast.success("Item added to wishlist");
     },
     onError: (error) => {
-      console.error("Error adding to wishlist:", error);
       toast.error("Failed to add item to wishlist");
     }
   });
@@ -152,6 +151,7 @@ export const MyContext = ({ children }) => {
     setWishlist(true);
   
     try {
+      if(!user) return toast.error("Please login to add item to wishlist");
       await mutateAsync({blog});
     } catch (error) {
       console.error("Mutation error:", error);

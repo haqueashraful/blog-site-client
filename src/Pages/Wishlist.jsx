@@ -6,6 +6,7 @@ import { Context } from "../Context/MyContext";
 import Loading from "../Component/Loading";
 import bgImage1 from   "../assets/bg2.jpg"
 import bgImage2 from   "../assets/bg5.jpg"
+import { toast } from "react-toastify";
 
 const Wishlist = () => {
     const { wishlist, user, isChecked } = useContext( Context );
@@ -19,14 +20,11 @@ const Wishlist = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["wishlist", wishlist],
     queryFn: getData,
+    
   });
 
   if (isLoading) {
     return <div><Loading /></div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
   }
 
   const checkedBg = isChecked ? bgImage1 : bgImage2
