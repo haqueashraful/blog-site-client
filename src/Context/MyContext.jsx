@@ -125,10 +125,10 @@ export const MyContext = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    const newTheme = isChecked ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", newTheme);
-  }, [isChecked]);
+  // useEffect(() => {
+  //   const newTheme = isChecked ? "dark" : "light";
+  //   document.documentElement.setAttribute("data-theme", newTheme);
+  // }, [isChecked]);
 
   const queryClient = useQueryClient();
 

@@ -31,7 +31,9 @@ const NavBar = () => {
           aria-label="Options"
           icon={<RxHamburgerMenu />}
           variant="outline"
-          className={`!border !rounded-full ${isChecked ? "!text-white border-white" : "!text-black !border-black"}`}
+          className={`!border !rounded-full ${
+            isChecked ? "!text-white border-white" : "!text-black !border-black"
+          }`}
         />
         <MenuList className="space-y-2 !z-auto">
           <NavLink
@@ -100,82 +102,122 @@ const NavBar = () => {
       </Menu>
 
       <div className="">
-      <a href="/" className={`btn btn-ghost text-xl ${isChecked ? "text-white" : ""}`}>HA Blog</a>
+        <a
+          href="/"
+          className={`btn btn-ghost text-xl ${isChecked ? "text-white" : ""}`}
+        >
+          HA Blog
+        </a>
       </div>
       <div className="flex gap-2">
-      <div className=" hidden lg:flex">
-      {user ? (
-          <>
-            <WrapItem
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={user?.displayName}
-            >
-              <Avatar name={user?.displayName} src={user?.photoURL} />
-            </WrapItem>
-            <Tooltip
-              id="my-tooltip"
-              style={{
-                backgroundColor: "#50C9C5",
-                color: "white",
-                fontSize: "14px",
-              }}
-            />
-            <button
-              onClick={handleLogOut}
+        <div className=" hidden lg:flex">
+          {user ? (
+            <>
+              <WrapItem
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+              >
+                <Avatar name={user?.displayName} src={user?.photoURL} />
+              </WrapItem>
+              <Tooltip
+                id="my-tooltip"
+                style={{
+                  backgroundColor: "#50C9C5",
+                  color: "white",
+                  fontSize: "14px",
+                }}
+              />
+              <button
+                onClick={handleLogOut}
+                className="btn btn-outline !py-2 text-black    hover:text-white ml-2"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/login"
               className="btn btn-outline !py-2 text-black    hover:text-white ml-2"
             >
-              Logout
-            </button>
-          </>
-        ) : (
-          <Link
-            to="/login"
-            className="btn btn-outline btn-success !py-2 hover:!bg-green-300"
-          >
-            Login
-          </Link>
-        )}
-      </div>
+              Login
+            </Link>
+          )}
+        </div>
 
         <div className=" lg:hidden">
-        {
-          user ? (
+          {user ? (
             <Menu>
-            <MenuButton
-             
-              variant="outline"
-              className="!text-teal-600 !border !border-teal-600 !rounded-full"
-            >
-              <WrapItem
-            >
-              <Avatar name={user?.displayName} src={user?.photoURL} />
-            </WrapItem>
-            </MenuButton>
-            <MenuList>
-              <MenuItem ><span className="text-xl">User:</span> {user?.displayName}</MenuItem>
-              <MenuItem onClick={handleLogOut}>Logout</MenuItem>
-            </MenuList>
-          </Menu>
-          ): (
+              <MenuButton
+                variant="outline"
+                className="!text-teal-600 !border !border-teal-600 !rounded-full"
+              >
+                <WrapItem>
+                  <Avatar name={user?.displayName} src={user?.photoURL} />
+                </WrapItem>
+              </MenuButton>
+              <MenuList>
+                <MenuItem>
+                  <span className="text-xl">User:</span> {user?.displayName}
+                </MenuItem>
+                <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+              </MenuList>
+            </Menu>
+          ) : (
             <Link
-            to="/login"
-            className="btn btn-outline btn-success !py-2 hover:!bg-green-300"
-          >
-            Login
-          </Link>
-          )
-        }
+              to="/login"
+              className="btn btn-outline !py-2 text-black    hover:text-white ml-2"
+            >
+              Login
+            </Link>
+          )}
         </div>
         <div>
-          <input id="checkbox" type="checkbox" onChange={handleChange} checked={isChecked} />
+          <input
+            id="checkbox"
+            type="checkbox"
+            onChange={handleChange}
+            checked={isChecked}
+          />
           <label className="switch" htmlFor="checkbox">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              className="slider"
-            >
-              <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"></path>
-            </svg>
+            {isChecked ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="white"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-sun"
+              >
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-moon"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            )}
           </label>
         </div>
       </div>

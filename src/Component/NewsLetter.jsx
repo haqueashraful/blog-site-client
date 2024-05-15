@@ -14,7 +14,7 @@ const NewsLetter = () => {
     <div className="w-full bg-[#023A55] my-10 py-16 rounded-md">
       <div className="w-4/5 mx-auto lg:px-20 px-3 py-10 text-center bg-[#FFFFFF] rounded-lg">
         <h1 className="text-5xl font-bold text-black tracking-widest">Newsletter</h1>
-        <p className="text-black">Get our weekly newsletter</p>
+        <p className="text-black mt-5">Get our weekly newsletter</p>
         <form onSubmit={handleSubmit} className="w-full flex justify-center gap-1 lg:gap-5 lg:px-10">
           <input
             type="text"
