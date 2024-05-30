@@ -12,6 +12,8 @@ import BlogDetails from "../Pages/BlogDetails";
 import PrivateRoute from "../Authentication/PrivateRoute";
 import ErrorPage from "../Component/ErrorPage";
 import Home from "../Pages/Home";
+import Subscription from "../Pages/SubsCription";
+import Subscriber from "../Pages/Subscriber";
 
 const Routes = createBrowserRouter([
     {
@@ -54,6 +56,14 @@ const Routes = createBrowserRouter([
             {
                 path: "/blogdetails/:id",
                 element: <PrivateRoute><BlogDetails/></PrivateRoute>,
+            },
+            {
+                path: "/subscription",
+                element:<PrivateRoute><Subscription/></PrivateRoute>,
+            },
+            {
+                path: "/subscription/success",
+                element: <PrivateRoute><Subscriber/></PrivateRoute>,
             }
         ]
     }

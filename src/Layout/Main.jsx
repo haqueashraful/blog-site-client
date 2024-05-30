@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <>
       <div  
-           className={`min-h-screen relative px-2 py-1 lg:py-3 lg:px-20 ${isChecked? "bg-base-content" : "bg-teal-50"}`}>
+           className={`relative px-2 py-1 lg:py-3 lg:px-20 ${isChecked? "bg-base-content" : "bg-teal-50"}`}>
         <div className="sticky top-0 !z-50">
           <NavBar />
         </div>

@@ -98,6 +98,19 @@ const NavBar = () => {
             <FaStar className="text-xl mr-3" />
             <span>Wishlist</span>
           </NavLink>
+          <NavLink 
+            type="button"
+            id="menu-list-:rb:-menuitem-:rd:"
+            className={({ isActive }) =>
+              isActive
+                ? "!bg-teal-500 !text-white  flex justify-start items-center gap-1 px-3 py-1"
+                : " flex justify-start z-auto items-center gap-1 px-3"
+            }
+            to="/subscription"
+          >
+            <FaStar className="text-xl mr-3" />
+            <span>Subscription</span>
+          </NavLink>
         </MenuList>
       </Menu>
 

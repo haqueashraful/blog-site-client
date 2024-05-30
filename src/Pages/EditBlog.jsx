@@ -26,7 +26,7 @@ const EditBlog = () => {
   
   const fetchData = () =>{
     axios
-    .get(`https://blog-site-server-lemon.vercel.app/blogs/id/${id}`, { withCredentials: true })
+    .get(`http://localhost:5000/blogs/id/${id}`, { withCredentials: true })
     .then((response) => {
       return response.data;
     });
@@ -35,7 +35,7 @@ const EditBlog = () => {
   const {data = {}, isLoading} = useQuery(
     {
       queryKey: ["blog", id],
-      queryFn: () => axios.get(`https://blog-site-server-lemon.vercel.app/blogs/id/${id}`, { withCredentials: true }).then((res) => res.data),
+      queryFn: () => axios.get(`http://localhost:5000/blogs/id/${id}`, { withCredentials: true }).then((res) => res.data),
     }
   )
 
@@ -55,7 +55,7 @@ useEffect(() => {
 }, [data]);
 
 const updateBlog = useMutation({
- mutationFn: (data) => axios.patch(`https://blog-site-server-lemon.vercel.app/blogs/${id}`, data, { withCredentials: true })
+ mutationFn: (data) => axios.patch(`http://localhost:5000/blogs/${id}`, data, { withCredentials: true })
  .then((res) => res.data),
  onSuccess: () => {
   toast.success("Blog updated successfully");

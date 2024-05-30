@@ -25,7 +25,7 @@ const BlogDetails = () => {
     queryKey: ["blogDetails", id],
     queryFn: () =>
       axios
-        .get(`https://blog-site-server-lemon.vercel.app/blogs/id/${id}`, {
+        .get(`http://localhost:5000/blogs/id/${id}`, {
           withCredentials: true,
         })
         .then((res) => res.data),
@@ -35,7 +35,7 @@ const BlogDetails = () => {
     queryKey: ["commentsData", id, showComments, updateComment],
     queryFn: () =>
       axios
-        .get(`https://blog-site-server-lemon.vercel.app/comments/${id}`, {
+        .get(`http://localhost:5000/comments/${id}`, {
           withCredentials: true,
         })
         .then((res) => res.data),
@@ -56,7 +56,7 @@ const BlogDetails = () => {
   const { mutateAsync: mutate } = useMutation({
     mutationFn: (data) =>
       axios
-        .post(`https://blog-site-server-lemon.vercel.app/comments/`, data, {
+        .post(`http://localhost:5000/comments/`, data, {
           withCredentials: true,
         })
         .then(() => {
@@ -81,7 +81,7 @@ const BlogDetails = () => {
   const deletedBLog = useMutation({
     mutationFn: () =>
       axios
-        .delete(`https://blog-site-server-lemon.vercel.app/blogs/${id}`, {
+        .delete(`http://localhost:5000/blogs/${id}`, {
           withCredentials: true,
         })
         .then(() => {}),

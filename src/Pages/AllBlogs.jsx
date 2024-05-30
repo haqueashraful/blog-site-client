@@ -24,7 +24,7 @@ const AllBlogs = () => {
     setPage(1);
   }, [search, selectedCategory]);
 
-  const url = `https://blog-site-server-lemon.vercel.app/blogs?search=${search || ""}&category=${
+  const url = `http://localhost:5000/blogs?search=${search || ""}&category=${
     selectedCategory ? selectedCategory.value || "" : ""
   }&skip=${(page - 1) * limit}&limit=${limit}`;
 
@@ -37,7 +37,7 @@ const AllBlogs = () => {
         .catch((error) => console.error("Error fetching blogs:", error)),
   });
 
-  const totalUrl = `https://blog-site-server-lemon.vercel.app/totalcount?search=${
+  const totalUrl = `http://localhost:5000/totalcount?search=${
     search || ""
   }&category=${selectedCategory ? selectedCategory.value || "" : ""}`;
 

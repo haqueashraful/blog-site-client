@@ -21,7 +21,7 @@ const CommentCard = ({ comment, setUpdateComment }) => {
 
   const updatedComment = useMutation({
     mutationFn: async (data) => {
-      await axios.patch(`https://blog-site-server-lemon.vercel.app/comments/${_id}`, data, { withCredentials: true });
+      await axios.patch(`http://localhost:5000/comments/${_id}`, data, { withCredentials: true });
     },
     onSuccess: () => {
       toast.success("Comment updated successfully");
@@ -48,7 +48,7 @@ const CommentCard = ({ comment, setUpdateComment }) => {
 
   const deletedComment = useMutation({
     mutationFn: async () => {
-      await axios.delete(`https://blog-site-server-lemon.vercel.app/comments/${_id}`, { withCredentials: true });
+      await axios.delete(`http://localhost:5000/comments/${_id}`, { withCredentials: true });
     },
     onSuccess: () => {
       toast.success("Comment deleted successfully");
@@ -63,7 +63,7 @@ const CommentCard = ({ comment, setUpdateComment }) => {
 
   const addReply = useMutation({
     mutationFn: async (replyData) => {
-      await axios.post(`https://blog-site-server-lemon.vercel.app/comments/${_id}/replies`, replyData, { withCredentials: true });
+      await axios.post(`http://localhost:5000/comments/${_id}/replies`, replyData, { withCredentials: true });
     },
     onSuccess: () => {
       toast.success("Reply added successfully");
