@@ -14,7 +14,7 @@ const Slider = () => {
     queryKey: ["featured"],
     queryFn: () =>
       axios
-        .get("https://blog-site-server-lemon.vercel.app/blogs", {
+        .get("http://localhost:5000/blogs", {
           withCredentials: true,
         })
         .then((res) => res.data),

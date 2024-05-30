@@ -18,7 +18,7 @@ const FeaturedBlogs = () => {
     queryKey: ["featuredBlogs"],
     queryFn: () =>
       axios
-        .get("https://blog-site-server-lemon.vercel.app/featured-blogs")
+        .get("http://localhost:5000/featured-blogs")
         .then((res) => res.data),
   });
 

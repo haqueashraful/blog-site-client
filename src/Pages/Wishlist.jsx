@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 const Wishlist = () => {
     const { wishlist, user, isChecked } = useContext( Context );
   const getData = async () => {
-    const response = await axios.get(`https://blog-site-server-lemon.vercel.app/wishlist/${user.email}`, {
+    const response = await axios.get(`http://localhost:5000/wishlist/${user.email}`, {
       withCredentials: true,
     });
     return response.data;

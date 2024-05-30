@@ -14,14 +14,14 @@ import {
     const navigate = useNavigate();
     return (
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ rotate: 360, scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-          duration: 1,
-        }}
+        // initial={{ scale: 0 }}
+        // animate={{ rotate: 360, scale: 1 }}
+        // transition={{
+        //   type: "spring",
+        //   stiffness: 260,
+        //   damping: 20,
+        //   duration: 1,
+        // }}
         className="my-10 px-2 lg:px-0 bg-white/40 rounded-md"
       >
         <div className="flex flex-col lg:flex-row gap-3 justify-center rounded-md items-center overflow-hidden">

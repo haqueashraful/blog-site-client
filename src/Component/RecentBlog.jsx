@@ -10,7 +10,7 @@ const RecentBlog = () => {
   const { isChecked } = useContext(Context);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["recentBlog"],
-    queryFn: async () => await axios.get("https://blog-site-server-lemon.vercel.app/blogs/recent", { withCredentials: true }).then((res) => res.data),
+    queryFn: async () => await axios.get("http://localhost:5000/blogs/recent", { withCredentials: true }).then((res) => res.data),
   });
 
   console.log(data)
