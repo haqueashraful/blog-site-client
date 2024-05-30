@@ -87,7 +87,7 @@ export const MyContext = ({ children }) => {
       setStateLoader(false);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post("https://blog-site-server-lemon.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((response) => {
@@ -96,7 +96,7 @@ export const MyContext = ({ children }) => {
       } else {
         axios
           .post(
-            "http://localhost:5000/logout",
+            "https://blog-site-server-lemon.vercel.app/logout",
             loggedUser,
             { withCredentials: true }
           )
@@ -130,7 +130,7 @@ export const MyContext = ({ children }) => {
   const { mutateAsync } = useMutation({
     mutationFn: ({ blog }) =>
       axios.post(
-        "http://localhost:5000/wishlist",
+        "https://blog-site-server-lemon.vercel.app/wishlist",
         { ...blog, userEmail: user?.email },
         { withCredentials: true }
       ),
@@ -157,7 +157,7 @@ export const MyContext = ({ children }) => {
 
   const deleteWishlist = useMutation({
     mutationFn: (id) =>
-      axios.delete(`http://localhost:5000/wishlist/${id}`, {
+      axios.delete(`https://blog-site-server-lemon.vercel.app/wishlist/${id}`, {
         withCredentials: true,
       }),
     onSuccess: () => {

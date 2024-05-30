@@ -14,7 +14,7 @@ const RecentBlogCard = ({ item }) => {
 
   const getWishlist = async () => {
     const response = await axios.get(
-      `http://localhost:5000/wishlist/${user.email}`,
+      `https://blog-site-server-lemon.vercel.app/wishlist/${user.email}`,
       { withCredentials: true }
     );
     return response.data;

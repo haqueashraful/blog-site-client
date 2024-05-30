@@ -23,7 +23,7 @@ const ReplyCard = ({ reply, commentId, setUpdateComment }) => {
 
   const queryClient = useQueryClient();
     // const replyId = reply._id;
-  const replyUrl = `http://localhost:5000/comments/${commentId}/replies/${_id}`
+  const replyUrl = `https://blog-site-server-lemon.vercel.app/comments/${commentId}/replies/${_id}`
   const updateReply = useMutation({
     mutationFn: async (data) => {
       await axios.patch(
@@ -61,7 +61,7 @@ const ReplyCard = ({ reply, commentId, setUpdateComment }) => {
   const deleteReply = useMutation({
     mutationFn: async () => {
       await axios.delete(
-        `http://localhost:5000/comments/${commentId}/replies/${_id}`,
+        `https://blog-site-server-lemon.vercel.app/comments/${commentId}/replies/${_id}`,
         { withCredentials: true }
       );
     },
