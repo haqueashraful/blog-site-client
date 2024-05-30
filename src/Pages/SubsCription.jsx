@@ -21,7 +21,7 @@ const Subscription = () => {
     e.preventDefault();
     console.log(formData);
     try {
-      const response = await axios.post("http://localhost:5000/payment", formData);
+      const response = await axios.post("https://blog-site-server-lemon.vercel.app/payment", formData);
         console.log(response.data.url)
       if (response.data.url) {
         window.location.replace(response.data.url);

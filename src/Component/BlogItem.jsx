@@ -14,7 +14,7 @@ const BlogItem = ({ blog }) => {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/wishlist/${user.email}`);
+        const response = await axios.get(`https://blog-site-server-lemon.vercel.app/wishlist/${user.email}`);
         setWishlist(response.data);
       } catch (error) {
         console.error("Error fetching wishlist:", error);
